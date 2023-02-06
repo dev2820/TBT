@@ -1,26 +1,23 @@
 import { NavigationContainer } from "@react-navigation/native";
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet } from "react-native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import HomePage from "./src/Pages/HomePage";
-import TimerPage from "./src/Pages/TimerPage";
+import HomePage from "@/screens/HomePage";
+import TimerPage from "@/screens/TimerPage";
 
 const Stack = createNativeStackNavigator();
 
 export default () => {
   return (
-    <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen
-          name="Home"
-          component={HomePage}
-          options={{ title: "Welcome" }}
-        />
-        <Stack.Screen
-          name="Timer"
-          component={TimerPage}
-          options={{ title: "Welcome" }}
-        />
+    <NavigationContainer initialRouteName="Home">
+      <StatusBar translucent={true} backgroundColor={"transparent"}></StatusBar>
+      <Stack.Navigator
+        screenOptions={{
+          headerShown: false,
+        }}
+      >
+        <Stack.Screen name="Home" component={HomePage} />
+        <Stack.Screen name="Timer" component={TimerPage} />
       </Stack.Navigator>
     </NavigationContainer>
   );

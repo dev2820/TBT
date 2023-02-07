@@ -10,6 +10,7 @@ module.exports = {
           "@router/*": ["./src/router"],
           "@components/*": ["./src/components"],
           "@containers/*": ["./src/containers"],
+          "@constants/*": ["./src/constants"],
           "@screens/*": ["./src/screens"],
           "@utils/*": ["./src/utils"],
         },

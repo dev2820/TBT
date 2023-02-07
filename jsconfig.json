@@ -1,16 +1,15 @@
 {
   "compilerOptions": {
     "baseUrl": "./src",
+    "paths": {
+      "@assets/*": ["./src/assets"],
+      "@router/*": ["./src/router"],
+      "@components/*": ["./src/components"],
+      "@containers/*": ["./src/containers"],
+      "@screens/*": ["./src/screens"],
+      "@utils/*": ["./src/utils"],
+      "@/*": ["./src"]
+    },
     "experimentalDecorators": true
-  },
-  "baseUrl": ".",
-  "paths": {
-    "@/*": ["./src"],
-    "@assets/*": ["./src/assets"],
-    "@router/*": ["./src/router"],
-    "@components/*": ["./src/components"],
-    "@containers/*": ["./src/containers"],
-    "@screens/*": ["./src/screens"],
-    "@utils/*": ["./src/utils"]
   }
 }

@@ -7,13 +7,13 @@
         "extensions": [".ios.js", ".android.js", ".js", ".ts", ".tsx", ".json"],
         "root": ["."],
         "alias": {
-          "@": "./src",
-          "@assets/*": ["./src/assets"],
-          "@router/*": ["./src/router"],
-          "@components/*": ["./src/components"],
-          "@containers/*": ["./src/containers"],
-          "@screens/*": ["./src/screens"],
-          "@utils/*": ["./src/utils"]
+          "@assets": "./src/assets",
+          "@router": "./src/router",
+          "@components": "./src/components",
+          "@containers": "./src/containers",
+          "@screens": "./src/screens",
+          "@utils": "./src/utils",
+          "@": "./src"
         }
       }
     ]

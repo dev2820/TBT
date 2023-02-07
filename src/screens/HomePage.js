@@ -110,8 +110,8 @@ const styles = StyleSheet.create({
     height: 160,
   },
   startButton: {
-    width: 320,
-    height: 80,
+    width: 160,
+    height: 160,
     elevation: 4,
     alignItems: "center",
   },

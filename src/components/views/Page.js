@@ -1,16 +1,19 @@
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { View } from "react-native";
 
-const Page = ({ children }) => {
+const Page = ({ children, style }) => {
   const insets = useSafeAreaInsets();
 
   return (
     <View
-      style={{
-        paddingTop: Math.floor(insets.top),
-        paddingHorizontal: 16,
-        flex: 1,
-      }}
+      style={[
+        style,
+        {
+          paddingTop: Math.floor(insets.top),
+          paddingHorizontal: 16,
+          flex: 1,
+        },
+      ]}
     >
       {children}
     </View>

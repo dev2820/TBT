@@ -12,6 +12,8 @@ const Page = ({ children, style }) => {
           paddingTop: Math.floor(insets.top),
           paddingHorizontal: 16,
           flex: 1,
+          flexDirection: "column",
+          justifyContent: "center",
         },
       ]}
     >

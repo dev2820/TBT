@@ -1,12 +1,11 @@
-import React from "react";
 import { View, Text, StyleSheet, Button, FlatList } from "react-native";
-import { Page, Card, ThemeButton } from "@components/views";
-import THEME from "@constants/THEME";
-import GLOBAL from "@constants/GLOBAL";
-import GlobalStyle from "@assets/styles/GlobalStyle";
+import { Page, Card } from "@components/views";
+import globalStyle from "@assets/globalStyle";
 import formatTime from "@utils/formatTime";
+import Title from "@components/Title";
+import THEME from "@constants/THEME";
 
-const phaseSettings = [
+const settings = [
   {
     name: "준비",
     theme: THEME.READY,
@@ -40,9 +39,9 @@ const renderItem = ({ index, item }) => {
     : styles.lastOfLine;
   return (
     <View style={[styles.gridItem, itemPositionStyle]}>
-      <Card theme={item.theme} style={[styles.card]}>
+      <Card style={[styles.card]}>
         <Text>{item.name}</Text>
-        <Text style={GlobalStyle[GLOBAL.TEXT.HEADING.LARGE]}>
+        <Text style={globalStyle.HEADING_LARGE}>
           {item.type === "time" ? formatTime(item.value) : item.value}
         </Text>
       </Card>
@@ -51,27 +50,23 @@ const renderItem = ({ index, item }) => {
 };
 
 export default HomePage = ({ navigation }) => {
-  const Title = "🔥 TBT 🔥";
   return (
     <Page style={{ alignItems: "center" }}>
-      <Text style={[styles.title, GlobalStyle[GLOBAL.TEXT.DISPLAY.LARGE]]}>
-        {Title}
-      </Text>
+      <Title>🔥 TBT 🔥</Title>
       <View style={styles.settingsContainer}>
         <FlatList
-          data={phaseSettings}
+          data={settings}
           style={styles.grid}
           renderItem={renderItem}
           numColumns={2}
         />
       </View>
-      <ThemeButton
-        style={[GlobalStyle.round, styles.startButton]}
+      <Button
+        title="start"
+        style={[styles.startButton]}
         theme={THEME.PRIMARY}
         onPress={() => navigation.navigate("Timer")}
-      >
-        <Text style={{ fontSize: 32 }}>Start</Text>
-      </ThemeButton>
+      ></Button>
     </Page>
   );
 };
@@ -86,9 +81,6 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     width: "100%",
     marginBottom: 60,
-  },
-  grid: {
-    flex: 1,
   },
   gridItem: {
     flex: 1,

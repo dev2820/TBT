@@ -17,6 +17,11 @@ const globalStyle = StyleSheet.create({
     lineHeight: 20,
     weight: "500",
   },
+  [GLOBAL.TEXT.DISPLAY.LARGE]: {
+    fontSize: 57,
+    lineHeight: 64,
+    weight: 700,
+  },
   round: {
     borderRadius: 999,
   },

@@ -31,6 +31,9 @@ const globalStyle = StyleSheet.create({
     lineHeight: 20,
     fontWeight: "500",
   },
+  ON_PRIMARY: {
+    color: "#ffffff",
+  },
   ROUND: {
     borderRadius: 999,
   },

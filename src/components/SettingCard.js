@@ -3,13 +3,15 @@ import { Card } from "@components/views";
 import globalStyle from "@assets/globalStyle";
 import formatTime from "@utils/formatTime";
 
-const Setting = ({ index, item, numColumns }) => {
+const SettingCard = ({ settingInfo }) => {
   return (
     <View style={[styles.container]}>
       <Card style={styles.card}>
-        <Text>{item.name}</Text>
+        <Text>{settingInfo.name}</Text>
         <Text style={globalStyle.HEADING_LARGE}>
-          {item.type === "time" ? formatTime(item.value) : item.value}
+          {settingInfo.type === "time"
+            ? formatTime(settingInfo.value)
+            : settingInfo.value}
         </Text>
       </Card>
     </View>
@@ -34,4 +36,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Setting;
+export default SettingCard;

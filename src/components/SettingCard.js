@@ -15,7 +15,7 @@ const SettingCard = ({ settingInfo }) => {
   return (
     <Card style={[styles.container, theme]}>
       <Label style={styles.label}>{settingInfo.name}</Label>
-      <Text style={[styles.value, globalStyle.HEADING_LARGE]}>
+      <Text style={[styles.value, globalStyle.DISPLAY_SMALL]}>
         {format(settingInfo)}
       </Text>
     </Card>

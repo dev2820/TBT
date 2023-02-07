@@ -1,10 +1,10 @@
 import { View, Text, StyleSheet, Button, FlatList } from "react-native";
 import { Page, Card } from "@components/views";
+import Title from "@components/Title";
+import Setting from "@components/Setting";
 import globalStyle from "@assets/globalStyle";
 import formatTime from "@utils/formatTime";
-import Title from "@components/Title";
 import THEME from "@constants/THEME";
-
 const settings = [
   {
     name: "준비",
@@ -32,23 +32,6 @@ const settings = [
   },
 ];
 
-const renderItem = ({ index, item }) => {
-  const isFirstElementOfLine = index % 2 === 0;
-  const itemPositionStyle = isFirstElementOfLine
-    ? styles.firstOfLine
-    : styles.lastOfLine;
-  return (
-    <View style={[styles.gridItem, itemPositionStyle]}>
-      <Card style={[styles.card]}>
-        <Text>{item.name}</Text>
-        <Text style={globalStyle.HEADING_LARGE}>
-          {item.type === "time" ? formatTime(item.value) : item.value}
-        </Text>
-      </Card>
-    </View>
-  );
-};
-
 export default HomePage = ({ navigation }) => {
   return (
     <Page style={{ alignItems: "center" }}>
@@ -57,7 +40,9 @@ export default HomePage = ({ navigation }) => {
         <FlatList
           data={settings}
           style={styles.grid}
-          renderItem={renderItem}
+          renderItem={({ index, item }) => (
+            <Setting index={index} item={item} numColumns={2}></Setting>
+          )}
           numColumns={2}
         />
       </View>
@@ -77,25 +62,12 @@ const styles = StyleSheet.create({
     padding: 24,
   },
   settingsContainer: {
-    height: 400,
     justifyContent: "center",
     width: "100%",
     marginBottom: 60,
   },
-  gridItem: {
-    flex: 1,
+  grid: {
     padding: 10,
-    alignItems: "center",
-  },
-  firstOfLine: {
-    alignItems: "flex-end",
-  },
-  lastOfLine: {
-    alignItems: "flex-start",
-  },
-  card: {
-    width: 160,
-    height: 160,
   },
   startButton: {
     width: 160,

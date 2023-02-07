@@ -54,7 +54,6 @@ export default HomePage = ({ navigation }) => {
   const Title = "🔥 TBT 🔥";
   return (
     <Page style={{ alignItems: "center" }}>
-      <View style={{ flex: 1, justifyContent: "flex-end" }}></View>
       <Text style={[styles.title, GlobalStyle[GLOBAL.TEXT.DISPLAY.LARGE]]}>
         {Title}
       </Text>
@@ -73,7 +72,6 @@ export default HomePage = ({ navigation }) => {
       >
         <Text style={{ fontSize: 32 }}>Start</Text>
       </ThemeButton>
-      <View style={{ flex: 1, justifyContent: "flex-end" }}></View>
     </Page>
   );
 };

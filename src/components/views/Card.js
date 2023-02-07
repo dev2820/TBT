@@ -1,9 +1,13 @@
 import React from "react";
 import { StyleSheet, TouchableOpacity } from "react-native";
 
-const Card = ({ children, style }) => {
+const Card = ({ children, style, onPress }) => {
   return (
-    <TouchableOpacity style={[styles.container, style]} activeOpacity={0.5}>
+    <TouchableOpacity
+      style={[styles.container, style]}
+      activeOpacity={0.5}
+      onPress={onPress}
+    >
       {children}
     </TouchableOpacity>
   );

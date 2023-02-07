@@ -1,5 +1,5 @@
-import { StyleSheet, View, Text } from "react-native";
-import { Card } from "@components/views";
+import { StyleSheet, Text } from "react-native";
+import { Card, Label } from "@components/views";
 import globalStyle from "@assets/globalStyle";
 import formatTime from "@utils/formatTime";
 import SETTING from "@constants/SETTING";
@@ -10,20 +10,24 @@ const format = ({ value, type }) => {
   return value;
 };
 const SettingCard = ({ settingInfo }) => {
+  const theme = { backgroundColor: settingInfo.theme };
+
   return (
-    <View style={[styles.container]}>
-      <Card style={styles.card}>
-        <Text>{settingInfo.name}</Text>
-        <Text style={globalStyle.HEADING_LARGE}>{format(settingInfo)}</Text>
-      </Card>
-    </View>
+    <Card style={[styles.container, theme]}>
+      <Label style={styles.label}>{settingInfo.name}</Label>
+      <Text style={[styles.value, globalStyle.HEADING_LARGE]}>
+        {format(settingInfo)}
+      </Text>
+    </Card>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 10,
+    margin: 10,
+    width: 160,
+    height: 160,
     alignItems: "center",
   },
   firstOfLine: {
@@ -32,9 +36,15 @@ const styles = StyleSheet.create({
   lastOfLine: {
     alignItems: "flex-start",
   },
-  card: {
-    width: 160,
-    height: 160,
+  value: {
+    flexGrow: 1,
+    textAlignVertical: "center",
+    textAlign: "center",
+  },
+  label: {
+    position: "absolute",
+    left: 16,
+    top: 16,
   },
 });
 

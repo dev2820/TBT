@@ -1,5 +1,5 @@
 import Card from "@components/views/Card";
 import Page from "@components/views/Page";
-import ThemeButton from "@components/views/ThemeButton";
+import Label from "@components/views/Label";
 
-export { Card, Page, ThemeButton };
+export { Card, Page, Label };

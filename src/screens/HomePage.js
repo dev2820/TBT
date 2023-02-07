@@ -4,7 +4,7 @@ import Title from "@components/Title";
 import Settings from "@components/Settings";
 import THEME from "@constants/THEME";
 
-export default HomePage = ({ navigation }) => {
+const HomePage = ({ navigation }) => {
   return (
     <Page style={{ alignItems: "center" }}>
       <Title>🔥 TBT 🔥</Title>
@@ -27,3 +27,5 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
 });
+
+export default HomePage;

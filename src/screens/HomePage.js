@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { StyleSheet, Text, FlatList, View } from "react-native";
-import { Page, Card, Modal } from "@components/views";
+import { Page, Card } from "@components/views";
 import Title from "@components/Title";
 import SETTING from "@constants/SETTING";
 import SettingCard from "@components/SettingCard";
@@ -61,11 +61,6 @@ const HomePage = ({ navigation }) => {
           START
         </Text>
       </Card>
-      {isModalShow && (
-        <Modal>
-          <Text>Hi</Text>
-        </Modal>
-      )}
     </Page>
   );
 };

@@ -3,7 +3,7 @@ import { View, StyleSheet, Text, TouchableOpacity } from "react-native";
 
 const Card = ({ children, style }) => {
   return (
-    <TouchableOpacity style={[style, styles.container]} activeOpacity={0.5}>
+    <TouchableOpacity style={[styles.container, style]} activeOpacity={0.5}>
       {children}
     </TouchableOpacity>
   );

@@ -11,6 +11,7 @@ module.exports = {
           "@components/*": ["./src/components"],
           "@containers/*": ["./src/containers"],
           "@constants/*": ["./src/constants"],
+          "@store/*": ["./src/store"],
           "@screens/*": ["./src/screens"],
           "@utils/*": ["./src/utils"],
         },

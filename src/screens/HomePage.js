@@ -1,33 +1,32 @@
-import { View, Text, StyleSheet, Button, FlatList } from "react-native";
-import { Page, Card } from "@components/views";
+import { View, StyleSheet, Button, FlatList } from "react-native";
+import { Page } from "@components/views";
+import SettingCard from "@components/SettingCard";
 import Title from "@components/Title";
-import Setting from "@components/Setting";
-import globalStyle from "@assets/globalStyle";
-import formatTime from "@utils/formatTime";
 import THEME from "@constants/THEME";
+import SETTING from "@constants/SETTING";
 const settings = [
   {
     name: "준비",
     theme: THEME.READY,
-    type: "time",
+    type: SETTING.TYPE.TIME,
     value: 180,
   },
   {
     name: "운동",
     theme: THEME.WORK,
-    type: "time",
+    type: SETTING.TYPE.TIME,
     value: 180,
   },
   {
     name: "휴식",
     theme: THEME.BREAK,
-    type: "time",
+    type: SETTING.TYPE.TIME,
     value: 180,
   },
   {
     name: "반복",
     theme: THEME.REPS,
-    type: "number",
+    type: SETTING.TYPE.REPS,
     value: 3,
   },
 ];
@@ -40,9 +39,7 @@ export default HomePage = ({ navigation }) => {
         <FlatList
           data={settings}
           style={styles.grid}
-          renderItem={({ index, item }) => (
-            <Setting index={index} item={item} numColumns={2}></Setting>
-          )}
+          renderItem={({ item }) => <SettingCard settingInfo={item} />}
           numColumns={2}
         />
       </View>

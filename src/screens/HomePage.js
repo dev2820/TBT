@@ -1,8 +1,8 @@
 import { StyleSheet, Button } from "react-native";
 import { Page } from "@components/views";
 import Title from "@components/Title";
-import THEME from "@constants/THEME";
 import Settings from "@components/Settings";
+import THEME from "@constants/THEME";
 
 export default HomePage = ({ navigation }) => {
   return (

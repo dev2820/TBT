@@ -17,6 +17,9 @@ const globalStyle = StyleSheet.create({
     lineHeight: 20,
     weight: "500",
   },
+  round: {
+    borderRadius: 999,
+  },
 });
 
 export default globalStyle;

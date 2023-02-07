@@ -1,4 +1,7 @@
 import SettingCard from "@components/SettingCard";
+import THEME from "@constants/THEME";
+import SETTING from "@constants/SETTING";
+import { StyleSheet, View, FlatList } from "react-native";
 
 const settings = [
   {

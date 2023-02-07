@@ -5,9 +5,9 @@ const ThemeButton = ({ onPress, style, theme, children }) => {
   return (
     <TouchableOpacity
       onPress={onPress}
-      style={[style, Theme[theme], styles.container]}
+      style={[Theme[theme], styles.container, style]}
     >
-      {children}
+      <Text style={[Theme[theme], styles.title]}>{children}</Text>
     </TouchableOpacity>
   );
 };
@@ -18,6 +18,7 @@ const styles = StyleSheet.create({
   },
   title: {
     textAlign: "center",
+    backgroundColor: "transparent",
   },
 });
 

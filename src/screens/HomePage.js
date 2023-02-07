@@ -1,11 +1,44 @@
-import { StyleSheet, Text } from "react-native";
-import { Page, Card } from "@components/views";
+import { useState } from "react";
+import { StyleSheet, Text, FlatList, View } from "react-native";
+import { Page, Card, Modal } from "@components/views";
 import Title from "@components/Title";
-import Settings from "@components/Settings";
+import SETTING from "@constants/SETTING";
+import SettingCard from "@components/SettingCard";
 import globalStyle from "@assets/globalStyle";
 import THEME from "@constants/THEME";
 
+const settings = [
+  {
+    name: "준비",
+    theme: THEME.READY,
+    type: SETTING.TYPE.TIME,
+    value: 180,
+  },
+  {
+    name: "운동",
+    theme: THEME.WORK,
+    type: SETTING.TYPE.TIME,
+    value: 180,
+  },
+  {
+    name: "휴식",
+    theme: THEME.BREAK,
+    type: SETTING.TYPE.TIME,
+    value: 180,
+  },
+  {
+    name: "반복",
+    theme: THEME.REPS,
+    type: SETTING.TYPE.REPS,
+    value: 3,
+  },
+];
+const openModal = (index) => {
+  console.log(index);
+};
 const HomePage = ({ navigation }) => {
+  const [isModalShow, setIsModalShow] = useState();
+
   const gotoTimer = () => {
     navigation.navigate("Timer");
   };
@@ -13,17 +46,26 @@ const HomePage = ({ navigation }) => {
   return (
     <Page style={styles.container}>
       <Title>🔥 TBT 🔥</Title>
-      <Settings
-        style={{
-          height: 380,
-          width: "100%",
-        }}
-      />
+      <View style={styles.settings}>
+        <FlatList
+          data={settings}
+          style={styles.grid}
+          renderItem={({ item }) => (
+            <SettingCard settingInfo={item} onPress={() => openModal(item)} />
+          )}
+          numColumns={2}
+        />
+      </View>
       <Card style={[styles.startButton]} onPress={gotoTimer}>
         <Text style={[globalStyle.HEADING_LARGE, globalStyle.ON_PRIMARY]}>
           START
         </Text>
       </Card>
+      {isModalShow && (
+        <Modal>
+          <Text>Hi</Text>
+        </Modal>
+      )}
     </Page>
   );
 };
@@ -39,6 +81,13 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: THEME.PRIMARY,
+  },
+  settings: {
+    justifyContent: "center",
+    width: "100%",
+  },
+  grid: {
+    padding: 10,
   },
 });
 

@@ -10,8 +10,8 @@ const Card = ({ children, theme, style }) => {
 
 const styles = StyleSheet.create({
   container: {
-    elevation: 4,
-    borderRadius: 12,
+    elevation: 6,
+    borderRadius: 16,
     padding: 20,
   },
 });

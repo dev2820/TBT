@@ -84,7 +84,6 @@ const styles = StyleSheet.create({
     padding: 24,
   },
   settingsContainer: {
-    padding: 20,
     height: 400,
     justifyContent: "center",
     width: "100%",
@@ -95,8 +94,7 @@ const styles = StyleSheet.create({
   },
   gridItem: {
     flex: 1,
-    paddingHorizontal: 8,
-    marginBottom: 16,
+    padding: 10,
     alignItems: "center",
   },
   firstOfLine: {
@@ -112,7 +110,7 @@ const styles = StyleSheet.create({
   startButton: {
     width: 160,
     height: 160,
-    elevation: 4,
+    elevation: 6,
     alignItems: "center",
   },
 });

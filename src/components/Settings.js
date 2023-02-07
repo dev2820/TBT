@@ -30,9 +30,9 @@ const settings = [
   },
 ];
 
-const Settings = () => {
+const Settings = ({ style }) => {
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, style]}>
       <FlatList
         data={settings}
         style={styles.grid}

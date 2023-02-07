@@ -57,7 +57,7 @@ const HomePage = ({ navigation }) => {
           numColumns={2}
         />
       </View>
-      <Card style={[styles.startButton]} onPress={gotoTimer}>
+      <Card style={styles.startButton} onPress={gotoTimer}>
         <Text style={[globalStyle.HEADING_LARGE, globalStyle.ON_PRIMARY]}>
           START
         </Text>
@@ -79,7 +79,6 @@ const styles = StyleSheet.create({
   startButton: {
     width: 340,
     height: 80,
-    elevation: 5,
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: THEME.PRIMARY,

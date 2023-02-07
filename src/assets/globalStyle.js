@@ -34,6 +34,9 @@ const globalStyle = StyleSheet.create({
   ON_PRIMARY: {
     color: "#ffffff",
   },
+  EVEVATION5: {
+    elevation: 5,
+  },
   ROUND: {
     borderRadius: 999,
   },

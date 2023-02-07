@@ -47,7 +47,6 @@ const styles = StyleSheet.create({
   container: {
     justifyContent: "center",
     width: "100%",
-    marginBottom: 60,
   },
   grid: {
     padding: 10,

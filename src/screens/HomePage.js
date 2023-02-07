@@ -2,18 +2,20 @@ import { StyleSheet, Button } from "react-native";
 import { Page } from "@components/views";
 import Title from "@components/Title";
 import Settings from "@components/Settings";
-import THEME from "@constants/THEME";
 
 const HomePage = ({ navigation }) => {
+  const gotoTimer = () => {
+    navigation.navigate("Timer");
+  };
+
   return (
-    <Page style={{ alignItems: "center" }}>
+    <Page>
       <Title>🔥 TBT 🔥</Title>
       <Settings />
       <Button
         title="start"
         style={[styles.startButton]}
-        theme={THEME.PRIMARY}
-        onPress={() => navigation.navigate("Timer")}
+        onPress={gotoTimer}
       ></Button>
     </Page>
   );

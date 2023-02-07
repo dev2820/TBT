@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { StyleSheet, Text, FlatList, View } from "react-native";
-import { Page, Card } from "@components/views";
+import { Page, Card, CenterModal } from "@components/views";
 import Title from "@components/Title";
 import SETTING from "@constants/SETTING";
 import SettingCard from "@components/SettingCard";
 import globalStyle from "@assets/globalStyle";
 import THEME from "@constants/THEME";
+import Modal from "react-native-modal";
 
 const settings = [
   {
@@ -33,12 +34,9 @@ const settings = [
     value: 3,
   },
 ];
-const openModal = (index) => {
-  console.log(index);
-};
-const HomePage = ({ navigation }) => {
-  const [isModalShow, setIsModalShow] = useState();
 
+const HomePage = ({ navigation }) => {
+  const [isModalVisible, setModalVisible] = useState();
   const gotoTimer = () => {
     navigation.navigate("Timer");
   };
@@ -51,7 +49,10 @@ const HomePage = ({ navigation }) => {
           data={settings}
           style={styles.grid}
           renderItem={({ item }) => (
-            <SettingCard settingInfo={item} onPress={() => openModal(item)} />
+            <SettingCard
+              settingInfo={item}
+              onPress={() => setModalVisible(true)}
+            />
           )}
           numColumns={2}
         />
@@ -61,6 +62,12 @@ const HomePage = ({ navigation }) => {
           START
         </Text>
       </Card>
+      <CenterModal
+        isVisible={isModalVisible}
+        onBackdropPress={() => setModalVisible(false)}
+      >
+        <Text>Hi</Text>
+      </CenterModal>
     </Page>
   );
 };

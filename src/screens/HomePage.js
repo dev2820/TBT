@@ -6,9 +6,8 @@ import Settings from "@components/Settings";
 import NumberSetPage from "@screens/NumberSetPage";
 import globalStyle from "@assets/globalStyle";
 import THEME from "@constants/THEME";
-import { usePhaseStore } from "@store/phaseStore";
 import { useModalStore } from "@store/modalStore";
-import { Observer } from "mobx-react-lite";
+import { observer } from "mobx-react-lite";
 
 const settings = [
   {
@@ -37,32 +36,28 @@ const settings = [
   },
 ];
 
+const modal = useModalStore();
+
 const HomePage = ({ navigation }) => {
-  const modal = useModalStore();
   const gotoTimer = () => {
     navigation.navigate("Timer");
   };
-
   return (
-    <Observer>
-      {() => (
-        <Page style={styles.container}>
-          <Title>🔥 TBT 🔥</Title>
-          <Settings settings={settings}></Settings>
-          <Card style={styles.startButton} onPress={gotoTimer}>
-            <Text style={[globalStyle.HEADING_LARGE, globalStyle.ON_PRIMARY]}>
-              START
-            </Text>
-          </Card>
-          <CenterModal
-            isVisible={modal.isTimeModalVisible}
-            onBackdropPress={modal.hideTimeModal}
-          >
-            <NumberSetPage close={modal.hideTimeModal} />
-          </CenterModal>
-        </Page>
-      )}
-    </Observer>
+    <Page style={styles.container}>
+      <Title>🔥 TBT 🔥</Title>
+      <Settings settings={settings}></Settings>
+      <Card style={styles.startButton} onPress={gotoTimer}>
+        <Text style={[globalStyle.HEADING_LARGE, globalStyle.ON_PRIMARY]}>
+          START
+        </Text>
+      </Card>
+      <CenterModal
+        isVisible={modal.isTimeModalVisible}
+        onBackdropPress={() => modal.hideTimeModal()}
+      >
+        <NumberSetPage close={() => modal.hideTimeModal()} />
+      </CenterModal>
+    </Page>
   );
 };
 
@@ -79,4 +74,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default HomePage;
+export default observer(HomePage);

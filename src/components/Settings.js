@@ -18,7 +18,12 @@ const Settings = ({ settings }) => {
       modalStore.showBreakSetupModal();
       return;
     }
+    if (key === PHASE.WORK.NAME) {
+      modalStore.showWorkSetupModal();
+      return;
+    }
   };
+
   return (
     <View style={styles.container}>
       <Grid

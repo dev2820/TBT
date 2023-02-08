@@ -5,6 +5,7 @@ import SETTING from "@constants/SETTING";
 import Settings from "@components/Settings";
 import ReadySetupModal from "@screens/ReadySetupModal";
 import BreakSetupModal from "@screens/BreakSetupModal";
+import WorkSetupModal from "@screens/WorkSetupModal";
 import globalStyle from "@assets/globalStyle";
 import THEME from "@constants/THEME";
 import PHASE from "@constants/PHASE";
@@ -57,6 +58,7 @@ const HomePage = ({ navigation }) => {
       </Card>
       <ReadySetupModal></ReadySetupModal>
       <BreakSetupModal></BreakSetupModal>
+      <WorkSetupModal></WorkSetupModal>
     </Page>
   );
 };

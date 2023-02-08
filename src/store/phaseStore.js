@@ -1,9 +1,11 @@
 import { observable, observe } from "mobx";
 import { useTimerStore } from "@store/timerStore";
+import { useSetupStore } from "@store/setupStore";
 import PHASE from "@constants/PHASE";
 import REPS from "@constants/REPS";
 
 const timer = useTimerStore();
+const setup = useSetupStore();
 observe(timer, "time", (newTime) => {
   if (newTime === 0) {
     phaseStore.nextPhase();
@@ -12,7 +14,7 @@ observe(timer, "time", (newTime) => {
 const phaseStore = observable({
   phases: [],
   cursor: 0,
-  init(setup) {
+  init() {
     /**
      * setup을 기반으로 phases를 구성한다.
      */

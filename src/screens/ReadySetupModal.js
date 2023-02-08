@@ -16,12 +16,12 @@ const ReadySetupModal = () => {
   );
   const confirm = () => {
     setup.changeReadyTime(currentNum);
-    modal.hideTimeModal();
+    modal.hideReadySetupModal();
   };
   return (
     <CenterModal
-      isVisible={modal.isTimeModalVisible}
-      onBackdropPress={() => modal.hideTimeModal()}
+      isVisible={modal.isReadySetupModalVisible}
+      onBackdropPress={() => modal.hideReadySetupModal()}
     >
       <Confirm onConfirm={confirm}>
         <Text style={[globalStyle.HEADING_LARGE, styles.title]}>준비 시간</Text>

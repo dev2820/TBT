@@ -6,24 +6,24 @@ import { observer } from "mobx-react-lite";
 import PHASE from "@constants/PHASE";
 import REPS from "@constants/REPS";
 
-const modalStore = useModalStore();
+const modal = useModalStore();
 
 const Settings = ({ settings }) => {
   const showModal = (key) => {
     if (key === PHASE.READY.NAME) {
-      modalStore.showReadySetupModal();
+      modal.showReadySetupModal();
       return;
     }
     if (key === PHASE.BREAK.NAME) {
-      modalStore.showBreakSetupModal();
+      modal.showBreakSetupModal();
       return;
     }
     if (key === PHASE.WORK.NAME) {
-      modalStore.showWorkSetupModal();
+      modal.showWorkSetupModal();
       return;
     }
     if (key === REPS.NAME) {
-      modalStore.showRepsSetupModal();
+      modal.showRepsSetupModal();
       return;
     }
   };

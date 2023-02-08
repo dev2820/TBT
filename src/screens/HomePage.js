@@ -3,10 +3,9 @@ import { Page, Card, CenterModal } from "@components/views";
 import Title from "@components/Title";
 import SETTING from "@constants/SETTING";
 import Settings from "@components/Settings";
-import NumberSet from "@components/NumberSet";
+import ReadySetupModal from "@screens/ReadySetupModal";
 import globalStyle from "@assets/globalStyle";
 import THEME from "@constants/THEME";
-import { useModalStore } from "@store/modalStore";
 import { observer } from "mobx-react-lite";
 
 const settings = [
@@ -36,8 +35,6 @@ const settings = [
   },
 ];
 
-const modal = useModalStore();
-
 const HomePage = ({ navigation }) => {
   const gotoTimer = () => {
     navigation.navigate("Timer");
@@ -51,12 +48,7 @@ const HomePage = ({ navigation }) => {
           START
         </Text>
       </Card>
-      <CenterModal
-        isVisible={modal.isTimeModalVisible}
-        onBackdropPress={() => modal.hideTimeModal()}
-      >
-        <NumberSet close={() => modal.hideTimeModal()} />
-      </CenterModal>
+      <ReadySetupModal></ReadySetupModal>
     </Page>
   );
 };

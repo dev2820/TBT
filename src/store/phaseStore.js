@@ -1,4 +1,6 @@
 import { observable } from "mobx";
+import PHASE from "@constants/PHASE";
+import REPS from "@constants/REPS";
 
 const phaseStore = observable({
   phases: [],
@@ -7,6 +9,21 @@ const phaseStore = observable({
     /**
      * setup을 기반으로 phases를 구성한다.
      */
+    const newPhases = [];
+    const readyPhase = setup[PHASE.READY.NAME];
+    const workPhase = setup[PHASE.WORK.NAME];
+    const breakPhase = setup[PHASE.BREAK.NAME];
+    const reps = setup[REPS.NAME].value;
+    const isLastPhase = (phaseIndex) => phaseIndex === reps - 1;
+
+    newPhases.push(readyPhase);
+    for (let i = 0; i < reps; i++) {
+      newPhases.push(workPhase);
+      if (isLastPhase(i)) break;
+      newPhases.push(breakPhase);
+    }
+    this.cursor = 0;
+    this.phases = newPhases;
   },
   get currentPhase() {
     /**

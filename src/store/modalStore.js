@@ -5,12 +5,12 @@ import { observable } from "mobx";
  */
 
 const modalStore = observable({
-  isTimeModalVisible: false,
-  showTimeModal() {
-    this.isTimeModalVisible = true;
+  isReadySetupModalVisible: false,
+  showReadySetupModal() {
+    this.isReadySetupModalVisible = true;
   },
-  hideTimeModal() {
-    this.isTimeModalVisible = false;
+  hideReadySetupModal() {
+    this.isReadySetupModalVisible = false;
   },
 });
 

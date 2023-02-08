@@ -4,6 +4,7 @@ import { CenterModal, Confirm } from "@components/views";
 import { observer } from "mobx-react-lite";
 import { useModalStore } from "@store/modalStore";
 import { useSetupStore } from "@store/setupStore";
+import globalStyle from "@assets/globalStyle";
 
 const modal = useModalStore();
 const setup = useSetupStore();
@@ -20,7 +21,7 @@ const ReadySetupModal = () => {
       onBackdropPress={() => modal.hideTimeModal()}
     >
       <Confirm onConfirm={confirm}>
-        <Text style={styles.text}>Hi {currentNum}</Text>
+        <Text style={[globalStyle.HEADING_LARGE, styles.title]}>준비 시간</Text>
         <TextInput
           type="numberic"
           onChangeText={(text) => setCurrentNum(parseInt(text), 10)}
@@ -31,8 +32,8 @@ const ReadySetupModal = () => {
 };
 
 const styles = StyleSheet.create({
-  text: {
-    color: "green",
+  title: {
+    textAlign: "center",
   },
 });
 

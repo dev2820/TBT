@@ -3,7 +3,7 @@ import SettingCard from "@components/SettingCard";
 import { Grid } from "@components/views";
 
 const renderItem = ({ item }) => {
-  <SettingCard setting={item} onPress={() => setModalVisible(true)} />;
+  return <SettingCard setting={item} onPress={() => setModalVisible(true)} />;
 };
 
 const Settings = ({ settings }) => {
@@ -17,8 +17,8 @@ const Settings = ({ settings }) => {
 const styles = StyleSheet.create({
   container: {
     justifyContent: "center",
+    alignItems: "center",
     width: "100%",
-    backgroundColor: "red",
   },
 });
 

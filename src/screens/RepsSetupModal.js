@@ -12,8 +12,9 @@ const setup = useSetupStore();
 
 const RepsSetupModal = () => {
   const [currentNum, changeCurrentNum] = useState(setup[REPS.NAME].value);
+
   const confirm = () => {
-    setup.changeReps(currentNum);
+    setup.changeReps(parseInt(currentNum || 0, 10));
     modal.hideRepsSetupModal();
   };
   return (
@@ -25,7 +26,7 @@ const RepsSetupModal = () => {
         <Text style={[globalStyle.HEADING_LARGE, styles.title]}>반복 횟수</Text>
         <TextInput
           style={{ height: 60 }}
-          onChangeText={(text) => changeCurrentNum(parseInt(text, 10))}
+          onChangeText={changeCurrentNum}
           value={currentNum}
           defaultValue={currentNum.toString()}
           keyboardType="numeric"

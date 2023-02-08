@@ -13,7 +13,7 @@ const setup = useSetupStore();
 const WorkSetupModal = () => {
   const [currentNum, changeCurrentNum] = useState(setup[PHASE.WORK.NAME].value);
   const confirm = () => {
-    setup.changeWorkTime(currentNum);
+    setup.changeWorkTime(parseInt(currentNum || 0, 10));
     modal.hideWorkSetupModal();
   };
   return (
@@ -25,7 +25,7 @@ const WorkSetupModal = () => {
         <Text style={[globalStyle.HEADING_LARGE, styles.title]}>운동 시간</Text>
         <TextInput
           style={{ height: 60 }}
-          onChangeText={(text) => changeCurrentNum(parseInt(text, 10))}
+          onChangeText={changeCurrentNum}
           value={currentNum}
           defaultValue={currentNum.toString()}
           keyboardType="numeric"

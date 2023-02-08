@@ -15,7 +15,7 @@ const BreakSetupModal = () => {
     setup[PHASE.BREAK.NAME].value
   );
   const confirm = () => {
-    setup.changeBreakTime(currentNum);
+    setup.changeBreakTime(parseInt(currentNum || 0, 10));
     modal.hideBreakSetupModal();
   };
   return (
@@ -27,7 +27,7 @@ const BreakSetupModal = () => {
         <Text style={[globalStyle.HEADING_LARGE, styles.title]}>휴식 시간</Text>
         <TextInput
           style={{ height: 60 }}
-          onChangeText={(text) => changeCurrentNum(parseInt(text, 10))}
+          onChangeText={changeCurrentNum}
           value={currentNum}
           defaultValue={currentNum.toString()}
           keyboardType="numeric"

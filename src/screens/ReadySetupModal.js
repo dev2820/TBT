@@ -15,7 +15,7 @@ const ReadySetupModal = () => {
     setup[PHASE.READY.NAME].value
   );
   const confirm = () => {
-    setup.changeReadyTime(currentNum);
+    setup.changeReadyTime(parseInt(currentNum || 0, 10));
     modal.hideReadySetupModal();
   };
   return (
@@ -27,7 +27,7 @@ const ReadySetupModal = () => {
         <Text style={[globalStyle.HEADING_LARGE, styles.title]}>준비 시간</Text>
         <TextInput
           style={{ height: 60 }}
-          onChangeText={(text) => changeCurrentNum(parseInt(text, 10))}
+          onChangeText={changeCurrentNum}
           value={currentNum}
           defaultValue={currentNum.toString()}
           keyboardType="numeric"

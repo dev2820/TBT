@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { View, Text, StyleSheet, TextInput } from "react-native";
-import { FlatButton, CenterModal } from "@components/views";
+import { CenterModal, Confirm } from "@components/views";
 import { observer } from "mobx-react-lite";
 import { useModalStore } from "@store/modalStore";
 import { useSetupStore } from "@store/setupStore";
@@ -20,14 +20,13 @@ const ReadySetupModal = () => {
       onBackdropPress={() => modal.hideTimeModal()}
     >
       <View>
-        <Text style={styles.text}>Hi {currentNum}</Text>
-        <TextInput
-          type="numberic"
-          onChangeText={(text) => setCurrentNum(parseInt(text), 10)}
-        ></TextInput>
-        <FlatButton onPress={confirm}>
-          <Text>확인</Text>
-        </FlatButton>
+        <Confirm onConfirm={confirm}>
+          <Text style={styles.text}>Hi {currentNum}</Text>
+          <TextInput
+            type="numberic"
+            onChangeText={(text) => setCurrentNum(parseInt(text), 10)}
+          ></TextInput>
+        </Confirm>
       </View>
     </CenterModal>
   );

@@ -28,6 +28,14 @@ const modalStore = observable({
   hideWorkSetupModal() {
     this.isWorkSetupModalVisible = false;
   },
+
+  isRepsSetupModalVisible: false,
+  showRepsSetupModal() {
+    this.isRepsSetupModalVisible = true;
+  },
+  hideRepsSetupModal() {
+    this.isRepsSetupModalVisible = false;
+  },
 });
 
 const useModalStore = () => {

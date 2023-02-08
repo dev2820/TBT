@@ -22,6 +22,10 @@ const Settings = ({ settings }) => {
       modalStore.showWorkSetupModal();
       return;
     }
+    if (key === REPS.NAME) {
+      modalStore.showRepsSetupModal();
+      return;
+    }
   };
 
   return (

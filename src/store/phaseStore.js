@@ -32,7 +32,7 @@ const phaseStore = observable({
       if (isLastPhase(i)) break;
       newPhases.push(breakPhase);
     }
-    this.cursor = -1;
+    this.cursor = 0;
     this.phases = newPhases;
   },
   run() {

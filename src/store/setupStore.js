@@ -4,53 +4,31 @@ import SETTING from "@constants/SETTING";
 import PHASE from "@constants/PHASE";
 import REPS from "@constants/REPS";
 
-const settings = [
-  {
-    name: "준비",
-    theme: THEME.READY,
-    type: SETTING.TYPE.TIME,
-    value: 180,
-  },
-  {
-    name: "운동",
-    theme: THEME.WORK,
-    type: SETTING.TYPE.TIME,
-    value: 180,
-  },
-  {
-    name: "휴식",
-    theme: THEME.BREAK,
-    type: SETTING.TYPE.TIME,
-    value: 180,
-  },
-  {
-    name: "반복",
-    theme: THEME.REPS,
-    type: SETTING.TYPE.REPS,
-    value: 3,
-  },
-];
 const setupStore = observable({
   [PHASE.READY.NAME]: {
     name: "준비",
+    key: PHASE.READY.NAME,
     theme: THEME.READY,
     type: SETTING.TYPE.TIME,
     value: PHASE.READY.INIT_VALUE,
   },
   [PHASE.WORK.NAME]: {
     name: "운동",
+    key: PHASE.WORK.NAME,
     theme: THEME.WORK,
     type: SETTING.TYPE.TIME,
     value: PHASE.WORK.INIT_VALUE,
   },
   [PHASE.BREAK.NAME]: {
     name: "휴식",
+    key: PHASE.BREAK.NAME,
     theme: THEME.BREAK,
     type: SETTING.TYPE.TIME,
     value: PHASE.BREAK.INIT_VALUE,
   },
   [REPS.NAME]: {
     name: "반복",
+    key: REPS.NAME,
     theme: THEME.REPS,
     type: SETTING.TYPE.NUMBER,
     value: REPS.INIT_VALUE,

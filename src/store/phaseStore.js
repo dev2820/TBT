@@ -36,6 +36,7 @@ const phaseStore = observable({
     /**
      * 다음 페이즈로 이동한다.
      */
+    this.cursor++;
   },
   get isFinished() {
     /**

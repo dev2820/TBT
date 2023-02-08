@@ -1,16 +1,6 @@
 import { StyleSheet } from "react-native";
 
 const globalStyle = StyleSheet.create({
-  HEADING_LARGE: {
-    fontSize: 32,
-    lineHeight: 40,
-    fontWeight: "400",
-  },
-  HEADING_SMALL: {
-    fontSize: 24,
-    lineHeight: 32,
-    fontWeight: "400",
-  },
   DISPLAY_LARGE: {
     fontSize: 57,
     lineHeight: 64,
@@ -24,6 +14,16 @@ const globalStyle = StyleSheet.create({
   DISPLAY_SMALL: {
     lineHeight: 44,
     fontSize: 36,
+    fontWeight: "400",
+  },
+  HEADING_LARGE: {
+    fontSize: 32,
+    lineHeight: 40,
+    fontWeight: "400",
+  },
+  HEADING_SMALL: {
+    fontSize: 24,
+    lineHeight: 32,
     fontWeight: "400",
   },
   LABEL_LARGE: {

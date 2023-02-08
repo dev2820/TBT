@@ -5,10 +5,12 @@ import { useModalStore } from "@store/modalStore";
 import { observer } from "mobx-react-lite";
 import PHASE from "@constants/PHASE";
 import REPS from "@constants/REPS";
+import { useSetupStore } from "@store/setupStore";
 
 const modal = useModalStore();
+const setup = useSetupStore();
 
-const Settings = ({ settings }) => {
+const Settings = () => {
   const showModal = (key) => {
     if (key === PHASE.READY.NAME) {
       modal.showReadySetupModal();
@@ -27,7 +29,12 @@ const Settings = ({ settings }) => {
       return;
     }
   };
-
+  const settings = [
+    setup[PHASE.READY.NAME],
+    setup[PHASE.WORK.NAME],
+    setup[PHASE.BREAK.NAME],
+    setup[REPS.NAME],
+  ];
   return (
     <View style={styles.container}>
       <Grid

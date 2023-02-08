@@ -9,26 +9,15 @@ import RepsSetupModal from "@screens/RepsSetupModal";
 import globalStyle from "@assets/globalStyle";
 import THEME from "@constants/THEME";
 import { observer } from "mobx-react-lite";
-import { useSetupStore } from "@store/setupStore";
-import PHASE from "@constants/PHASE";
-import REPS from "@constants/REPS";
-
-const setup = useSetupStore();
 
 const HomePage = ({ navigation }) => {
-  const settings = [
-    setup[PHASE.READY.NAME],
-    setup[PHASE.WORK.NAME],
-    setup[PHASE.BREAK.NAME],
-    setup[REPS.NAME],
-  ];
   const gotoTimer = () => {
     navigation.navigate("Timer");
   };
   return (
     <Page style={styles.container}>
       <Title>🔥 TBT 🔥</Title>
-      <Settings settings={settings}></Settings>
+      <Settings></Settings>
       <Card style={styles.startButton} onPress={gotoTimer}>
         <Text style={[globalStyle.HEADING_LARGE, globalStyle.ON_PRIMARY]}>
           START

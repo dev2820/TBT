@@ -13,7 +13,6 @@ const Page = ({ children, style }) => {
           paddingHorizontal: 16,
           flex: 1,
           flexDirection: "column",
-          justifyContent: "center",
         },
       ]}
     >

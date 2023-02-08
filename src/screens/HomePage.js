@@ -34,6 +34,7 @@ const HomePage = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     alignItems: "center",
+    justifyContent: "center",
   },
   startButton: {
     width: 340,

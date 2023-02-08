@@ -2,7 +2,7 @@ import SettingCard from "@components/SettingCard";
 import { Grid } from "@components/views";
 
 const renderItem = ({ item }) => {
-  <SettingCard settingInfo={item} onPress={() => setModalVisible(true)} />;
+  <SettingCard setting={item} onPress={() => setModalVisible(true)} />;
 };
 const Settings = ({ settings }) => {
   return <Grid numColumns={2} data={settings} renderItem={renderItem}></Grid>;

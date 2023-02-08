@@ -9,14 +9,15 @@ const format = ({ value, type }) => {
 
   return value;
 };
-const SettingCard = ({ settingInfo, onPress }) => {
-  const theme = { backgroundColor: settingInfo.theme };
+
+const SettingCard = ({ setting, onPress }) => {
+  const theme = { backgroundColor: setting.theme };
 
   return (
     <Card style={[styles.container, theme]} onPress={onPress}>
-      <Label style={styles.label}>{settingInfo.name}</Label>
+      <Label style={styles.label}>{setting.name}</Label>
       <Text style={[styles.value, globalStyle.DISPLAY_SMALL]}>
-        {format(settingInfo)}
+        {format(setting)}
       </Text>
     </Card>
   );

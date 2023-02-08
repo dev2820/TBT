@@ -6,6 +6,7 @@ import { observe } from "mobx";
 import { useTimerStore } from "@store/timerStore";
 import { usePhaseStore } from "@store/phaseStore";
 import globalStyle from "@assets/globalStyle";
+import formatTime from "@utils/formatTime";
 
 const phase = usePhaseStore();
 const timer = useTimerStore();
@@ -24,14 +25,20 @@ const TimerPage = ({ navigation }) => {
       }
     });
   }, []);
-
+  const theme = { backgroundColor: phase.currentPhase?.theme };
   return (
-    <Page style={{ backgroundColor: phase.currentPhase?.theme }}>
-      <View style={styles.title}>
+    <Page style={theme}>
+      <View style={styles.topbar}>
         <Button title="Home" onPress={goBack}></Button>
       </View>
-      <Text style={globalStyle.HEADING_LARGE}>{phase.currentPhase?.name}</Text>
-      <Text style={globalStyle.DISPLAY_EXTRA_LARGE}>{timer.time}</Text>
+      <View style={styles.timer}>
+        <Text style={globalStyle.HEADING_LARGE}>
+          {phase.currentPhase?.name}
+        </Text>
+        <Text style={[globalStyle.DISPLAY_EXTRA_LARGE, styles.time]}>
+          {formatTime(timer.time)}
+        </Text>
+      </View>
     </Page>
   );
 };
@@ -40,7 +47,18 @@ const styles = StyleSheet.create({
   text: {
     color: "green",
   },
-  title: {
+  timer: {
+    alignItems: "center",
+    top: 88,
+  },
+  time: {
+    height: 380,
+    textAlignVertical: "center",
+    fontWeight: "700",
+    letterSpacing: 8,
+  },
+  state: {},
+  topbar: {
     height: 56,
   },
 });

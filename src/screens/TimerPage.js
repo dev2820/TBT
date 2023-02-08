@@ -38,6 +38,10 @@ const TimerPage = ({ navigation }) => {
         <Text style={[globalStyle.DISPLAY_EXTRA_LARGE, styles.time]}>
           {formatTime(timer.time)}
         </Text>
+        <View style={styles.reps}>
+          <Text style={[globalStyle.DISPLAY_MEDIUM]}>{phase.currentRep}</Text>
+          <Text style={globalStyle.HEADING_SMALL}>/{phase.allRep} Reps</Text>
+        </View>
       </View>
     </Page>
   );
@@ -57,7 +61,11 @@ const styles = StyleSheet.create({
     fontWeight: "700",
     letterSpacing: 8,
   },
-  state: {},
+  reps: {
+    height: 44,
+    flexDirection: "row",
+    alignItems: "baseline",
+  },
   topbar: {
     height: 56,
   },

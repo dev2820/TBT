@@ -61,6 +61,12 @@ const phaseStore = observable({
      */
     return this.cursor >= this.phases.length;
   },
+  get currentRep() {
+    return Math.ceil(this.cursor / 2);
+  },
+  get allRep() {
+    return setup[REPS.NAME].value;
+  },
 });
 
 const usePhaseStore = () => {

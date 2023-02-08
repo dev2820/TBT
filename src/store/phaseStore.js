@@ -29,6 +29,8 @@ const phaseStore = observable({
     /**
      * 현재 수행중인 phase의 정보를 반환한다.
      */
+    if (this.cursor >= this.phases.length) return null;
+    return this.phases[this.cursor];
   },
   nextPhase() {
     /**

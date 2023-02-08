@@ -10,17 +10,26 @@ import formatTime from "@utils/formatTime";
 
 const phase = usePhaseStore();
 const timer = useTimerStore();
+let diposer = null;
+const clearTimer = () => {
+  if (diposer) {
+    diposer();
+    diposer = null;
+  }
+  timer.clear();
+};
 
 const TimerPage = ({ navigation }) => {
   const goBack = () => {
-    timer.clear();
+    clearTimer();
     navigation.pop();
   };
   useEffect(() => {
     phase.run();
-    const diposer = observe(phase, "isFinished", ({ newValue }) => {
+    if (diposer) return;
+
+    diposer = observe(phase, "isFinished", ({ newValue }) => {
       if (newValue === true) {
-        diposer();
         goBack();
       }
     });

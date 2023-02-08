@@ -1,12 +1,15 @@
 import { useState } from "react";
-import { StyleSheet, Text, FlatList, View } from "react-native";
+import { StyleSheet, Text, FlatList, View, TextInput } from "react-native";
 import { Page, Card, CenterModal } from "@components/views";
 import Title from "@components/Title";
 import SETTING from "@constants/SETTING";
 import SettingCard from "@components/SettingCard";
+import NumberSetPage from "@screens/NumberSetPage";
 import globalStyle from "@assets/globalStyle";
 import THEME from "@constants/THEME";
-import Modal from "react-native-modal";
+import { usePhaseStore } from "@store/phaseStore";
+import { useModalStore } from "@store/modalStore";
+import { Observer } from "mobx-react-lite";
 
 const settings = [
   {
@@ -36,39 +39,40 @@ const settings = [
 ];
 
 const HomePage = ({ navigation }) => {
-  const [isModalVisible, setModalVisible] = useState();
+  const modal = useModalStore();
   const gotoTimer = () => {
     navigation.navigate("Timer");
   };
 
   return (
-    <Page style={styles.container}>
-      <Title>🔥 TBT 🔥</Title>
-      <View style={styles.settings}>
-        <FlatList
-          data={settings}
-          style={styles.grid}
-          renderItem={({ item }) => (
-            <SettingCard
-              settingInfo={item}
-              onPress={() => setModalVisible(true)}
+    <Observer>
+      {() => (
+        <Page style={styles.container}>
+          <Title>🔥 TBT 🔥</Title>
+          <View style={styles.settings}>
+            <FlatList
+              data={settings}
+              style={styles.grid}
+              renderItem={({ item }) => (
+                <SettingCard settingInfo={item} onPress={modal.showTimeModal} />
+              )}
+              numColumns={2}
             />
-          )}
-          numColumns={2}
-        />
-      </View>
-      <Card style={styles.startButton} onPress={gotoTimer}>
-        <Text style={[globalStyle.HEADING_LARGE, globalStyle.ON_PRIMARY]}>
-          START
-        </Text>
-      </Card>
-      <CenterModal
-        isVisible={isModalVisible}
-        onBackdropPress={() => setModalVisible(false)}
-      >
-        <Text>Hi</Text>
-      </CenterModal>
-    </Page>
+          </View>
+          <Card style={styles.startButton} onPress={gotoTimer}>
+            <Text style={[globalStyle.HEADING_LARGE, globalStyle.ON_PRIMARY]}>
+              START
+            </Text>
+          </Card>
+          <CenterModal
+            isVisible={modal.isTimeModalVisible}
+            onBackdropPress={modal.hideTimeModal}
+          >
+            <NumberSetPage close={modal.hideTimeModal} />
+          </CenterModal>
+        </Page>
+      )}
+    </Observer>
   );
 };
 

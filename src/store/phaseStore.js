@@ -49,7 +49,7 @@ const phaseStore = observable({
     /**
      * 모든 페이즈를 완료 했다면 true를 반환한다.
      */
-    this.cursor >= this.phases.length;
+    return this.cursor >= this.phases.length;
   },
 });
 

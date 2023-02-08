@@ -1,7 +1,14 @@
-import { observable } from "mobx";
+import { observable, observe } from "mobx";
+import { useTimerStore } from "@store/timerStore";
 import PHASE from "@constants/PHASE";
 import REPS from "@constants/REPS";
 
+const timer = useTimerStore();
+observe(timer, "time", (newTime) => {
+  if (newTime === 0) {
+    phaseStore.nextPhase();
+  }
+});
 const phaseStore = observable({
   phases: [],
   cursor: 0,

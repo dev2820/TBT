@@ -25,7 +25,7 @@ const RepsSetupModal = () => {
         <Text style={[globalStyle.HEADING_LARGE, styles.title]}>반복 횟수</Text>
         <TextInput
           style={{ height: 60 }}
-          onChangeText={changeCurrentNum}
+          onChangeText={(text) => changeCurrentNum(parseInt(text, 10))}
           value={currentNum}
           defaultValue={currentNum.toString()}
           keyboardType="numeric"

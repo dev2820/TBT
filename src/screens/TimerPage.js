@@ -5,6 +5,7 @@ import { observer } from "mobx-react-lite";
 import { observe } from "mobx";
 import { useTimerStore } from "@store/timerStore";
 import { usePhaseStore } from "@store/phaseStore";
+import globalStyle from "@assets/globalStyle";
 
 const phase = usePhaseStore();
 const timer = useTimerStore();
@@ -29,10 +30,8 @@ const TimerPage = ({ navigation }) => {
       <View style={styles.title}>
         <Button title="Home" onPress={goBack}></Button>
       </View>
-      <Text>{phase.currentPhase?.name}</Text>
-      <Text>
-        {timer.time} {timer.state}
-      </Text>
+      <Text style={globalStyle.HEADING_LARGE}>{phase.currentPhase?.name}</Text>
+      <Text style={globalStyle.DISPLAY_EXTRA_LARGE}>{timer.time}</Text>
     </Page>
   );
 };

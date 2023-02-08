@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
     top: "50%",
     marginTop: -180,
     borderRadius: 16,
-    padding: 16,
+    overflow: "hidden",
   },
 });
 

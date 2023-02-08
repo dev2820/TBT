@@ -19,15 +19,13 @@ const ReadySetupModal = () => {
       isVisible={modal.isTimeModalVisible}
       onBackdropPress={() => modal.hideTimeModal()}
     >
-      <View>
-        <Confirm onConfirm={confirm}>
-          <Text style={styles.text}>Hi {currentNum}</Text>
-          <TextInput
-            type="numberic"
-            onChangeText={(text) => setCurrentNum(parseInt(text), 10)}
-          ></TextInput>
-        </Confirm>
-      </View>
+      <Confirm onConfirm={confirm}>
+        <Text style={styles.text}>Hi {currentNum}</Text>
+        <TextInput
+          type="numberic"
+          onChangeText={(text) => setCurrentNum(parseInt(text), 10)}
+        ></TextInput>
+      </Confirm>
     </CenterModal>
   );
 };

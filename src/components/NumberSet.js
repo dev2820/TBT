@@ -1,15 +1,12 @@
 import React, { useState } from "react";
 import { View, Text, StyleSheet, TextInput } from "react-native";
 import { FlatButton } from "@components/views";
-import { usePhaseStore } from "@store/phaseStore";
 import { observer } from "mobx-react-lite";
 
-const phase = usePhaseStore();
-
-const NumberSetPage = ({ close }) => {
+const NumberSet = ({ close, setter }) => {
   const [currentNum, setCurrentNum] = useState(3);
   const confirm = () => {
-    phase.setNum(currentNum);
+    setter(currentNum);
     close();
   };
   return (
@@ -32,4 +29,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default observer(NumberSetPage);
+export default observer(NumberSet);

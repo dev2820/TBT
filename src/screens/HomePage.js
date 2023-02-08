@@ -3,7 +3,7 @@ import { Page, Card, CenterModal } from "@components/views";
 import Title from "@components/Title";
 import SETTING from "@constants/SETTING";
 import Settings from "@components/Settings";
-import NumberSetPage from "@screens/NumberSetPage";
+import NumberSet from "@components/NumberSet";
 import globalStyle from "@assets/globalStyle";
 import THEME from "@constants/THEME";
 import { useModalStore } from "@store/modalStore";
@@ -55,7 +55,7 @@ const HomePage = ({ navigation }) => {
         isVisible={modal.isTimeModalVisible}
         onBackdropPress={() => modal.hideTimeModal()}
       >
-        <NumberSetPage close={() => modal.hideTimeModal()} />
+        <NumberSet close={() => modal.hideTimeModal()} />
       </CenterModal>
     </Page>
   );

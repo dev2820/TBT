@@ -2,10 +2,10 @@ import THEME from "@constants/THEME";
 import globalStyle from "@assets/globalStyle";
 import { View, Pressable, Text, StyleSheet } from "react-native";
 
-const Confirm = ({ children, onConfirm }) => {
+const Confirm = ({ style, children, onConfirm }) => {
   const CONFIRM = "확인";
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, style]}>
       <View style={styles.content}>{children}</View>
       <Pressable style={styles.confirm} onPress={onConfirm}>
         <Text style={[globalStyle.TITLE_LARGE, styles.confirmText]}>

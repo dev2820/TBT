@@ -1,4 +1,4 @@
-import { View, FlatList } from "react-native";
+import { View, FlatList, StyleSheet } from "react-native";
 
 const Grid = ({ numColumns, renderItem, data }) => {
   return (

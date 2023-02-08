@@ -1,4 +1,4 @@
 export default {
-  REPS: "reps",
+  NAME: "reps",
   INIT_VALUE: 3,
 };

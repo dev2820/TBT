@@ -1,6 +1,11 @@
 import { StyleSheet } from "react-native";
 
 const globalStyle = StyleSheet.create({
+  DISPLAY_EXTRA_LARGE: {
+    fontSize: 96,
+    lineHeight: 105,
+    weight: 400,
+  },
   DISPLAY_LARGE: {
     fontSize: 57,
     lineHeight: 64,

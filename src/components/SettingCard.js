@@ -31,12 +31,6 @@ const styles = StyleSheet.create({
     height: 160,
     alignItems: "center",
   },
-  firstOfLine: {
-    alignItems: "flex-end",
-  },
-  lastOfLine: {
-    alignItems: "flex-start",
-  },
   value: {
     flexGrow: 1,
     textAlignVertical: "center",

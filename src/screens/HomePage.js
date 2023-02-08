@@ -1,9 +1,8 @@
-import { useState } from "react";
-import { StyleSheet, Text, FlatList, View, TextInput } from "react-native";
+import { StyleSheet, Text } from "react-native";
 import { Page, Card, CenterModal } from "@components/views";
 import Title from "@components/Title";
 import SETTING from "@constants/SETTING";
-import SettingCard from "@components/SettingCard";
+import Settings from "@components/Settings";
 import NumberSetPage from "@screens/NumberSetPage";
 import globalStyle from "@assets/globalStyle";
 import THEME from "@constants/THEME";
@@ -49,16 +48,7 @@ const HomePage = ({ navigation }) => {
       {() => (
         <Page style={styles.container}>
           <Title>🔥 TBT 🔥</Title>
-          <View style={styles.settings}>
-            <FlatList
-              data={settings}
-              style={styles.grid}
-              renderItem={({ item }) => (
-                <SettingCard settingInfo={item} onPress={modal.showTimeModal} />
-              )}
-              numColumns={2}
-            />
-          </View>
+          <Settings settings={settings}></Settings>
           <Card style={styles.startButton} onPress={gotoTimer}>
             <Text style={[globalStyle.HEADING_LARGE, globalStyle.ON_PRIMARY]}>
               START
@@ -86,13 +76,6 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: THEME.PRIMARY,
-  },
-  settings: {
-    justifyContent: "center",
-    width: "100%",
-  },
-  grid: {
-    padding: 10,
   },
 });
 

@@ -6,8 +6,9 @@ import REPS from "@constants/REPS";
 
 const timer = useTimerStore();
 const setup = useSetupStore();
-observe(timer, "time", (newTime) => {
-  if (newTime === 0) {
+
+observe(timer, "state", ({ newValue }) => {
+  if (newValue === "finish") {
     phaseStore.nextPhase();
   }
 });
@@ -31,8 +32,14 @@ const phaseStore = observable({
       if (isLastPhase(i)) break;
       newPhases.push(breakPhase);
     }
-    this.cursor = 0;
+    this.cursor = -1;
     this.phases = newPhases;
+  },
+  run() {
+    if (this.currentPhase) {
+      timer.setTime(this.currentPhase.value);
+      timer.run();
+    }
   },
   get currentPhase() {
     /**
@@ -46,6 +53,7 @@ const phaseStore = observable({
      * 다음 페이즈로 이동한다.
      */
     this.cursor++;
+    this.run();
   },
   get isFinished() {
     /**

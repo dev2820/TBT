@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text, StyleSheet, TextInput } from "react-native";
+import { Text, StyleSheet, TextInput } from "react-native";
 import { CenterModal, Confirm } from "@components/views";
 import { observer } from "mobx-react-lite";
 import { useModalStore } from "@store/modalStore";

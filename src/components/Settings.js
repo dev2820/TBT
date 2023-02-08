@@ -1,39 +1,11 @@
-import { View, FlatList } from "react-native";
 import SettingCard from "@components/SettingCard";
+import { Grid } from "@components/views";
 
-const Settings = ({ settings }) => {
-  return (
-    <View style={styles.container}>
-      <FlatList
-        data={settings}
-        style={styles.grid}
-        renderItem={({ item }) => (
-          <SettingCard
-            settingInfo={item}
-            onPress={() => setModalVisible(true)}
-          />
-        )}
-        numColumns={2}
-      />
-    </View>
-  );
+const renderItem = ({ item }) => {
+  <SettingCard settingInfo={item} onPress={() => setModalVisible(true)} />;
 };
-
-const styles = StyleSheet.create({
-  container: {
-    justifyContent: "center",
-    width: "100%",
-  },
-  startButton: {
-    width: 340,
-    height: 80,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: THEME.PRIMARY,
-  },
-  grid: {
-    padding: 10,
-  },
-});
+const Settings = ({ settings }) => {
+  return <Grid numColumns={2} data={settings} renderItem={renderItem}></Grid>;
+};
 
 export default Settings;

@@ -1,23 +1,17 @@
-import { View, FlatList, StyleSheet } from "react-native";
+import { FlatList, StyleSheet } from "react-native";
 
 const Grid = ({ numColumns, renderItem, data }) => {
   return (
-    <View style={styles.container}>
-      <FlatList
-        data={data}
-        style={styles.grid}
-        renderItem={renderItem}
-        numColumns={numColumns}
-      />
-    </View>
+    <FlatList
+      data={data}
+      style={styles.grid}
+      renderItem={renderItem}
+      numColumns={numColumns}
+    />
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    justifyContent: "center",
-    width: "100%",
-  },
   grid: {
     padding: 10,
   },

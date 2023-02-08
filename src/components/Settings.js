@@ -1,15 +1,24 @@
 import { StyleSheet, View } from "react-native";
 import SettingCard from "@components/SettingCard";
 import { Grid } from "@components/views";
+import { useModalStore } from "@store/modalStore";
+import { observer } from "mobx-react-lite";
 
-const renderItem = ({ item }) => {
-  return <SettingCard setting={item} onPress={() => setModalVisible(true)} />;
-};
+const modalStore = useModalStore();
 
 const Settings = ({ settings }) => {
   return (
     <View style={styles.container}>
-      <Grid numColumns={2} data={settings} renderItem={renderItem}></Grid>
+      <Grid
+        numColumns={2}
+        data={settings}
+        renderItem={({ item }) => (
+          <SettingCard
+            setting={item}
+            onPress={() => modalStore.showTimeModal()}
+          />
+        )}
+      ></Grid>
     </View>
   );
 };
@@ -21,4 +30,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Settings;
+export default observer(Settings);

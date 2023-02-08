@@ -14,6 +14,10 @@ const Settings = ({ settings }) => {
       modalStore.showReadySetupModal();
       return;
     }
+    if (key === PHASE.BREAK.NAME) {
+      modalStore.showBreakSetupModal();
+      return;
+    }
   };
   return (
     <View style={styles.container}>

@@ -12,6 +12,14 @@ const modalStore = observable({
   hideReadySetupModal() {
     this.isReadySetupModalVisible = false;
   },
+
+  isBreakSetupModalVisible: false,
+  showBreakSetupModal() {
+    this.isBreakSetupModalVisible = true;
+  },
+  hideBreakSetupModal() {
+    this.isBreakSetupModalVisible = false;
+  },
 });
 
 const useModalStore = () => {

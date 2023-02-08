@@ -7,11 +7,15 @@ import BreakSetupModal from "@screens/BreakSetupModal";
 import WorkSetupModal from "@screens/WorkSetupModal";
 import RepsSetupModal from "@screens/RepsSetupModal";
 import globalStyle from "@assets/globalStyle";
-import THEME from "@constants/THEME";
 import { observer } from "mobx-react-lite";
+import { usePhaseStore } from "@store/phaseStore";
+import THEME from "@constants/THEME";
+
+const phase = usePhaseStore();
 
 const HomePage = ({ navigation }) => {
   const gotoTimer = () => {
+    phase.init();
     navigation.navigate("Timer");
   };
   return (

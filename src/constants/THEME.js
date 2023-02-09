@@ -5,6 +5,7 @@ export default {
   REPS: "#33B5E5",
   PRIMARY: "#0000FF",
   ALERT: "#FC4D4D",
-  PLACEHOLDER: "rgba(0,0,0,0.15)",
+  PLACEHOLDER: "rgba(0,0,0,0.1)",
+  PLACEHOLDER_DARKER: "rgba(0,0,0,0.2)",
   ON_SURFACE: "rgba(0,0,0,1)",
 };

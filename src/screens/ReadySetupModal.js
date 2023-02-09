@@ -8,14 +8,15 @@ import PHASE from "@constants/PHASE";
 const modal = useModalStore();
 const setup = useSetupStore();
 
+const confirm = (time) => {
+  setup.changeReadyTime(time);
+  modal.hideReadySetupModal();
+};
+const cancel = () => {
+  modal.hideReadySetupModal();
+};
+
 const ReadySetupModal = () => {
-  const confirm = (time) => {
-    setup.changeReadyTime(time);
-    modal.hideReadySetupModal();
-  };
-  const cancel = () => {
-    modal.hideReadySetupModal();
-  };
   return (
     <TimePickerModal
       title={"준비 시간"}

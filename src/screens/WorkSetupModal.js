@@ -8,14 +8,15 @@ import PHASE from "@constants/PHASE";
 const modal = useModalStore();
 const setup = useSetupStore();
 
+const confirm = (time) => {
+  setup.changeWorkTime(time);
+  modal.hideWorkSetupModal();
+};
+const cancel = () => {
+  modal.hideWorkSetupModal();
+};
+
 const WorkSetupModal = () => {
-  const confirm = (time) => {
-    setup.changeWorkTime(time);
-    modal.hideWorkSetupModal();
-  };
-  const cancel = () => {
-    modal.hideWorkSetupModal();
-  };
   return (
     <TimePickerModal
       title={"운동 시간"}

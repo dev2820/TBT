@@ -19,7 +19,6 @@ const NumberPicker = ({
     !isRotatable && num - step < min
   );
   const increase = () => {
-    console.log(num + step, max);
     if (isRotatable && num + step > max) {
       setNum(num + step - max + min - 1);
       return;

@@ -15,7 +15,7 @@ observe(timer, "state", ({ newValue }) => {
     phaseStore.setState(STATE.FINISH);
     return;
   }
-  phaseStore.nextPhase();
+  phaseStore.next();
 });
 
 const phaseStore = observable({
@@ -57,7 +57,7 @@ const phaseStore = observable({
     this.setState(STATE.RUN);
     timer.resume();
   },
-  nextPhase() {
+  next() {
     this.cursor++;
     this.run();
   },

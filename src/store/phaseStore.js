@@ -34,9 +34,6 @@ const phaseStore = observable({
     this.cursor = 0;
     this.phases = newPhases;
   },
-  _setState(state) {
-    this.state = state;
-  },
   run() {
     if (!this.currentPhase) return;
 
@@ -52,6 +49,9 @@ const phaseStore = observable({
     this._setState(STATE.RUN);
     timer.resume();
   },
+  next() {
+    this._next();
+  },
   _next() {
     this.cursor++;
     if (this.cursor >= this.phases.length) {
@@ -61,8 +61,8 @@ const phaseStore = observable({
 
     this.run();
   },
-  next() {
-    this._next();
+  _setState(state) {
+    this.state = state;
   },
   get currentPhase() {
     if (this.cursor >= this.phases.length) return null;

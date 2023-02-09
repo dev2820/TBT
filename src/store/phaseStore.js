@@ -17,6 +17,7 @@ observe(timer, "state", ({ newValue }) => {
 const phaseStore = observable({
   phases: [],
   cursor: 0,
+  state: STATE.FINISH,
   init() {
     const newPhases = [];
     const readyPhase = setup[PHASE.READY.NAME];
@@ -34,16 +35,22 @@ const phaseStore = observable({
     this.cursor = 0;
     this.phases = newPhases;
   },
+  setState(state) {
+    this.state = state;
+  },
   run() {
     if (this.currentPhase) {
+      this.setState(STATE.RUN);
       timer.setTime(this.currentPhase.value);
       timer.run();
     }
   },
   pause() {
+    this.setState(STATE.STOP);
     timer.pause();
   },
   resume() {
+    this.setState(STATE.RUN);
     timer.resume();
   },
   get currentPhase() {
@@ -62,6 +69,12 @@ const phaseStore = observable({
   },
   get allRep() {
     return setup[REPS.NAME].value;
+  },
+  get isStopped() {
+    return this.state === STATE.STOP;
+  },
+  get isRun() {
+    return this.state === STATE.RUN;
   },
 });
 

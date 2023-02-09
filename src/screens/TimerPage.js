@@ -34,6 +34,7 @@ const TimerPage = ({ navigation }) => {
       }
     });
   }, []);
+
   const theme = { backgroundColor: phase.currentPhase?.theme };
   return (
     <Page style={theme}>
@@ -51,6 +52,13 @@ const TimerPage = ({ navigation }) => {
           <Text style={[globalStyle.DISPLAY_MEDIUM]}>{phase.currentRep}</Text>
           <Text style={globalStyle.HEADING_SMALL}>/{phase.allRep} Reps</Text>
         </View>
+      </View>
+      <View>
+        {phase.isRun ? (
+          <Button title="정지" onPress={() => phase.pause()}></Button>
+        ) : (
+          <Button title="계속" onPress={() => phase.resume()}></Button>
+        )}
       </View>
     </Page>
   );

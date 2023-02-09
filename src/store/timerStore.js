@@ -11,9 +11,12 @@ const timerStore = observable({
   run() {
     this._run();
   },
+  clear() {
+    this._setTimer(null);
+  },
   pause() {
     this._setState(STATE.STOP);
-    this._clear();
+    this.clear();
   },
   resume() {
     this.run();
@@ -22,9 +25,9 @@ const timerStore = observable({
     this._setState(STATE.RUN);
     this._setTimer(
       setInterval(() => {
-        this._setTime(this.time - 1);
+        this.setTime(this.time - 1);
         if (this.time === 0) {
-          this._setTimer(null);
+          this.clear();
           this._setState(STATE.FINISH);
         }
       }, 1000)
@@ -41,9 +44,6 @@ const timerStore = observable({
   },
   _setState(state) {
     this.state = state;
-  },
-  _clear() {
-    this.setTimer(null);
   },
 });
 

@@ -31,7 +31,7 @@ const NumberPicker = ({
     });
   };
   const continuousIncrease = () => {
-    stopContinue = easeInRunner(increase, 250);
+    stopContinue = easeInRunner(increase, 200);
   };
   const stopContinueRunner = () => {
     if (!stopContinue) return;
@@ -47,7 +47,7 @@ const NumberPicker = ({
     });
   };
   const continuousDecrease = () => {
-    stopContinue = easeInRunner(decrease, 250);
+    stopContinue = easeInRunner(decrease, 200);
   };
   useEffect(() => {
     if (!isRotatable) {
@@ -78,7 +78,7 @@ const NumberPicker = ({
       <TouchableHighlight
         style={styles.button}
         onPress={decrease}
-        delayLongPress={500}
+        delayLongPress={400}
         onLongPress={continuousDecrease}
         onPressOut={stopContinueRunner}
         disabled={isDecreaseDisable}

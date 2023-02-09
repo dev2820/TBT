@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
   },
   startButton: {
     width: 340,
-    height: 80,
+    height: 100,
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: THEME.PRIMARY,

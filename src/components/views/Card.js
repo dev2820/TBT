@@ -16,7 +16,7 @@ const Card = ({ children, style, onPress }) => {
 
 const styles = StyleSheet.create({
   container: {
-    borderRadius: 24,
+    borderRadius: 30,
   },
 });
 

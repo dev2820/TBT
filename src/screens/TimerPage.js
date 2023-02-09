@@ -55,6 +55,7 @@ const TimerPage = ({ navigation }) => {
         <View style={styles.player}>
           <RoundCard
             style={[styles.smallController]}
+            elevation={10}
             onPress={() => phase.prev()}
           >
             <Text>{"<"}</Text>
@@ -63,6 +64,7 @@ const TimerPage = ({ navigation }) => {
           {phase.isRun ? (
             <RoundCard
               style={[styles.largeController]}
+              elevation={10}
               onPress={() => phase.pause()}
             >
               <Text>정지</Text>
@@ -70,6 +72,7 @@ const TimerPage = ({ navigation }) => {
           ) : (
             <RoundCard
               style={[styles.largeController]}
+              elevation={10}
               onPress={() => phase.resume()}
             >
               <Text>계속</Text>
@@ -77,6 +80,7 @@ const TimerPage = ({ navigation }) => {
           )}
           <RoundCard
             style={[styles.smallController]}
+            elevation={10}
             onPress={() => phase.next()}
           >
             <Text>{">"}</Text>

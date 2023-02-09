@@ -44,7 +44,7 @@ const globalStyle = StyleSheet.create({
   ON_PRIMARY: {
     color: "#ffffff",
   },
-  EVEVATION5: {
+  ELEVATION5: {
     elevation: 5,
   },
   ROUND: {

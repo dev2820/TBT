@@ -6,6 +6,7 @@ import { observer } from "mobx-react-lite";
 import { useModalStore } from "@store/modalStore";
 import { useSetupStore } from "@store/setupStore";
 import globalStyle from "@assets/globalStyle";
+import createDebounce from "@utils/createDebounce";
 import PHASE from "@constants/PHASE";
 
 const modal = useModalStore();
@@ -13,7 +14,7 @@ const setup = useSetupStore();
 
 const ReadySetupModal = () => {
   const [currentTime, setCurrentTime] = useState(setup[PHASE.READY.NAME].value);
-
+  const debouncedTimerSetter = createDebounce(setCurrentTime);
   const confirm = () => {
     setup.changeReadyTime(currentTime);
     modal.hideReadySetupModal();
@@ -28,7 +29,7 @@ const ReadySetupModal = () => {
         <TimePicker
           style={styles.picker}
           timeSelected={currentTime}
-          onChange={setCurrentTime}
+          onChange={debouncedTimerSetter}
         ></TimePicker>
       </Confirm>
     </CenterModal>

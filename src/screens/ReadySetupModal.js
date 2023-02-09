@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import { Text, StyleSheet, View } from "react-native";
+import WheelPicker from "react-native-wheely";
 import { CenterModal, Confirm } from "@components/views";
 import { observer } from "mobx-react-lite";
 import { useModalStore } from "@store/modalStore";
 import { useSetupStore } from "@store/setupStore";
 import globalStyle from "@assets/globalStyle";
 import PHASE from "@constants/PHASE";
-import WheelPicker from "react-native-wheely";
+import TIME from "@constants/TIME";
 
 const modal = useModalStore();
 const setup = useSetupStore();
@@ -33,7 +34,7 @@ const ReadySetupModal = () => {
           <View style={styles.picker}>
             <WheelPicker
               selectedIndex={currentMin}
-              options={[0, 1, 2, 3, 4, 5]}
+              options={TIME.MIN}
               onChange={(min) => changeCurrentMin(min)}
             ></WheelPicker>
           </View>
@@ -41,7 +42,7 @@ const ReadySetupModal = () => {
           <View style={styles.picker}>
             <WheelPicker
               selectedIndex={currentSec}
-              options={[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}
+              options={TIME.SEC}
               onChange={(sec) => changeCurrentSec(sec)}
             ></WheelPicker>
           </View>

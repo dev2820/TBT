@@ -1,10 +1,5 @@
 import { observable } from "mobx";
-
-const STATE = {
-  RUN: "run",
-  STOP: "stop",
-  FINISH: "finish",
-};
+import STATE from "@constants/STATE";
 
 const timerStore = observable({
   time: 0,

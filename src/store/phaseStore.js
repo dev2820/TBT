@@ -3,12 +3,13 @@ import { useTimerStore } from "@store/timerStore";
 import { useSetupStore } from "@store/setupStore";
 import PHASE from "@constants/PHASE";
 import REPS from "@constants/REPS";
+import STATE from "@constants/STATE";
 
 const timer = useTimerStore();
 const setup = useSetupStore();
 
 observe(timer, "state", ({ newValue }) => {
-  if (newValue === "finish") {
+  if (newValue === STATE.FINISH) {
     phaseStore.nextPhase();
   }
 });

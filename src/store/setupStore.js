@@ -3,6 +3,7 @@ import THEME from "@constants/THEME";
 import SETTING from "@constants/SETTING";
 import PHASE from "@constants/PHASE";
 import REPS from "@constants/REPS";
+import storage from "@modules/storage";
 
 const setupStore = observable(
   {
@@ -34,6 +35,19 @@ const setupStore = observable(
       type: SETTING.TYPE.NUMBER,
       value: REPS.INIT_VALUE,
     },
+    async init() {
+      const initialReadyTime =
+        (await storage.read(PHASE.READY.NAME)) ?? PHASE.READY.INIT_VALUE;
+      this.changeReadyTime(initialReadyTime);
+      const initialWorkTime =
+        (await storage.read(PHASE.WORK.NAME)) ?? PHASE.WORK.INIT_VALUE;
+      this.changeWorkTime(initialWorkTime);
+      const initialBreakTime =
+        (await storage.read(PHASE.BREAK.NAME)) ?? PHASE.BREAK.INIT_VALUE;
+      this.changeBreakTime(initialBreakTime);
+      const initialReps = (await storage.read(REPS.NAME)) ?? REPS.INIT_VALUE;
+      this.changeReps(initialReps);
+    },
     get settings() {
       return [
         this[PHASE.READY.NAME],
@@ -47,31 +61,35 @@ const setupStore = observable(
         ...this[PHASE.READY.NAME],
         value: time,
       };
+      storage.store(PHASE.READY.NAME, time);
     },
     changeWorkTime(time) {
       this[PHASE.WORK.NAME] = {
         ...this[PHASE.WORK.NAME],
         value: time,
       };
+      storage.store(PHASE.WORK.NAME, time);
     },
     changeBreakTime(time) {
       this[PHASE.BREAK.NAME] = {
         ...this[PHASE.BREAK.NAME],
         value: time,
       };
+      storage.store(PHASE.BREAK.NAME, time);
     },
-    changeReps(time) {
+    changeReps(reps) {
       this[REPS.NAME] = {
         ...this[REPS.NAME],
-        value: time,
+        value: reps,
       };
+      storage.store(REPS.NAME, reps);
     },
   },
   {
     settings: computed,
   }
 );
-
+setupStore.init();
 const useSetupStore = () => {
   return setupStore;
 };

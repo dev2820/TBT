@@ -54,6 +54,7 @@ const TimerPage = ({ navigation }) => {
         </View>
       </View>
       <View>
+        <Button title=">" onPress={() => phase.next()}></Button>
         {phase.isRun ? (
           <Button title="정지" onPress={() => phase.pause()}></Button>
         ) : (

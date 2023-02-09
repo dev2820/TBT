@@ -21,7 +21,7 @@ const TimePicker = ({ style, timeSelected, onChange }) => {
         options={TIME.MIN}
         onChange={(min) => timeChange(min, currentSec)}
       ></WheelPicker>
-      <Text style={{ textAlignVertical: "center" }}>:</Text>
+      <Text style={styles.colon}>:</Text>
       <WheelPicker
         selectedIndex={currentSec}
         containerStyle={styles.picker}
@@ -39,6 +39,9 @@ const styles = StyleSheet.create({
   picker: {
     width: 60,
     marginHorizontal: 10,
+  },
+  colon: {
+    textAlignVertical: "center",
   },
 });
 

@@ -10,12 +10,12 @@ const setup = useSetupStore();
 
 observe(timer, "state", ({ newValue }) => {
   if (newValue !== STATE.FINISH) return;
+  phaseStore.next();
 
   if (phaseStore.cursor >= phaseStore.phases.length) {
     phaseStore.setState(STATE.FINISH);
     return;
   }
-  phaseStore.next();
 });
 
 const phaseStore = observable({

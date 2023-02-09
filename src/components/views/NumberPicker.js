@@ -12,17 +12,33 @@ const NumberPicker = ({
   isRotatable,
 }) => {
   const [num, setNum] = useState(initNum);
-  const [isIncreaseDisable, setIncreaseDisable] = useState(num + step > max);
-  const [isDecreaseDisable, setDecreaseDisable] = useState(num - step < min);
+  const [isIncreaseDisable, setIncreaseDisable] = useState(
+    !isRotatable && num + step > max
+  );
+  const [isDecreaseDisable, setDecreaseDisable] = useState(
+    !isRotatable && num - step < min
+  );
   const increase = () => {
+    console.log(num + step, max);
+    if (isRotatable && num + step > max) {
+      setNum(num + step - max + min - 1);
+      return;
+    }
     setNum(num + step);
   };
   const decrease = () => {
+    if (isRotatable && num - step < min) {
+      setNum(num - step - min + max + 1);
+      return;
+    }
     setNum(num - step);
   };
   useEffect(() => {
-    setIncreaseDisable(num + step > max);
-    setDecreaseDisable(num - step < min);
+    if (!isRotatable) {
+      setIncreaseDisable(num + step > max);
+      setDecreaseDisable(num - step < min);
+    }
+
     onChange(num);
   }, [num]);
 

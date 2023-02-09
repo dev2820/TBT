@@ -20,6 +20,7 @@ const TimePicker = ({ style, timeSelected, onChange }) => {
         max={99}
         min={0}
         step={1}
+        isRotatable={true}
         onChange={(min) => timeChange(min, currentSec)}
       ></NumberPicker>
       <Text style={styles.colon}>:</Text>
@@ -28,6 +29,7 @@ const TimePicker = ({ style, timeSelected, onChange }) => {
         max={59}
         min={0}
         step={1}
+        isRotatable={true}
         onChange={(sec) => timeChange(currentMin, sec)}
       ></NumberPicker>
     </View>

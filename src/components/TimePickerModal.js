@@ -1,21 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, memo } from "react";
 import { Text, StyleSheet } from "react-native";
 import { CenterModal, Confirm } from "@components/views";
 import TimePicker from "@components/TimePicker";
 import globalStyle from "@assets/globalStyle";
-import createDebounce from "@utils/createDebounce";
 
-const TimePickerModal = ({
-  title,
-  isVisible,
-  onBackdropPress,
-  confirm,
-  cancel,
-  value,
-}) => {
+const TimePickerModal = ({ title, isVisible, confirm, cancel, value }) => {
   const [currentTime, changeCurrentTime] = useState(value);
-  const debouncedTimerSetter = createDebounce(changeCurrentTime);
-
   return (
     <CenterModal
       isVisible={isVisible}
@@ -37,7 +27,7 @@ const TimePickerModal = ({
         <TimePicker
           style={styles.picker}
           timeSelected={currentTime}
-          onChange={debouncedTimerSetter}
+          onChange={changeCurrentTime}
         ></TimePicker>
       </Confirm>
     </CenterModal>

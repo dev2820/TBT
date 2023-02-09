@@ -5,5 +5,15 @@ import CenterModal from "@components/views/CenterModal";
 import Grid from "@components/views/Grid";
 import Confirm from "@components/views/Confirm";
 import RoundCard from "@components/views/RoundCard";
+import NumberPicker from "@components/views/NumberPicker";
 
-export { Card, Page, Label, CenterModal, Grid, Confirm, RoundCard };
+export {
+  Card,
+  Page,
+  Label,
+  CenterModal,
+  Grid,
+  Confirm,
+  RoundCard,
+  NumberPicker,
+};

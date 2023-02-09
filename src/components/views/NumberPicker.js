@@ -9,15 +9,14 @@ const NumberPicker = ({ initNum, max = 0, min = 0, step, onChange }) => {
   const [isDecreaseDisable, setDecreaseDisable] = useState(num + step < min);
   const increase = () => {
     setNum(num + step);
-    onChange(num);
   };
   const decrease = () => {
     setNum(num - step);
-    onChange(num);
   };
   useEffect(() => {
     setIncreaseDisable(num + step > max);
     setDecreaseDisable(num - step < min);
+    onChange(num);
   }, [num]);
 
   return (

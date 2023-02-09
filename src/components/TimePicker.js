@@ -1,10 +1,9 @@
-import { useState } from "react";
+import { useState, memo } from "react";
 import { View, Text, StyleSheet } from "react-native";
 import WheelPicker from "react-native-wheely";
 import TIME from "@constants/TIME";
 import globalStyle from "@assets/globalStyle";
 
-const scale = (x) => Math.pow(3 / 4, x);
 const TimePicker = ({ style, timeSelected, onChange }) => {
   const [currentMin, changeCurrentMin] = useState(
     Math.floor(timeSelected / 60)
@@ -18,7 +17,6 @@ const TimePicker = ({ style, timeSelected, onChange }) => {
   return (
     <View style={[styles.pickers, style]}>
       <WheelPicker
-        scaleFunction={scale}
         itemTextStyle={globalStyle.HEADING_LARGE}
         itemHeight={44}
         selectedIndex={currentMin}
@@ -28,7 +26,6 @@ const TimePicker = ({ style, timeSelected, onChange }) => {
       ></WheelPicker>
       <Text style={styles.colon}>:</Text>
       <WheelPicker
-        scaleFunction={scale}
         itemTextStyle={globalStyle.HEADING_LARGE}
         itemHeight={44}
         selectedIndex={currentSec}
@@ -53,4 +50,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default TimePicker;
+export default memo(TimePicker);

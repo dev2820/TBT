@@ -52,14 +52,14 @@ const TimerPage = ({ navigation }) => {
           <Text style={[globalStyle.DISPLAY_MEDIUM]}>{phase.currentRep}</Text>
           <Text style={globalStyle.HEADING_SMALL}>/{phase.allRep} Reps</Text>
         </View>
-        <View>
-          <Button title=">" onPress={() => phase.next()}></Button>
+        <View style={styles.player}>
+          <Button title="<" onPress={() => phase.prev()}></Button>
           {phase.isRun ? (
             <Button title="정지" onPress={() => phase.pause()}></Button>
           ) : (
             <Button title="계속" onPress={() => phase.resume()}></Button>
           )}
-          <Button title="<" onPress={() => phase.prev()}></Button>
+          <Button title=">" onPress={() => phase.next()}></Button>
         </View>
       </View>
     </Page>
@@ -91,6 +91,10 @@ const styles = StyleSheet.create({
     height: 44,
     flexDirection: "row",
     alignItems: "baseline",
+  },
+  player: {
+    flexDirection: "row",
+    height: 40,
   },
 });
 

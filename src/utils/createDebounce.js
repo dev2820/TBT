@@ -6,7 +6,7 @@ const createDebounce = (cb) => {
 
     setTimeout(() => {
       cb(param);
-    }, 300);
+    }, 100);
   };
 };
 

@@ -57,22 +57,22 @@ const phaseStore = observable({
     this.setState(STATE.RUN);
     timer.resume();
   },
-  get currentPhase() {
-    if (this.cursor >= this.phases.length) return null;
-    return this.phases[this.cursor];
-  },
   nextPhase() {
     this.cursor++;
     this.run();
   },
-  get isFinished() {
-    return this.state === STATE.FINISH;
+  get currentPhase() {
+    if (this.cursor >= this.phases.length) return null;
+    return this.phases[this.cursor];
   },
   get currentRep() {
     return Math.ceil(this.cursor / 2);
   },
   get allRep() {
     return setup[REPS.NAME].value;
+  },
+  get isFinished() {
+    return this.state === STATE.FINISH;
   },
   get isStopped() {
     return this.state === STATE.STOP;

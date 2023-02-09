@@ -25,7 +25,7 @@ const ReadySetupModal = () => {
       onBackdropPress={() => modal.hideReadySetupModal()}
     >
       <Confirm onConfirm={confirm}>
-        <Text style={[globalStyle.HEADING_LARGE, styles.title]}>준비 시간</Text>
+        <Text style={[globalStyle.HEADING_SMALL, styles.title]}>준비 시간</Text>
         <TimePicker
           style={styles.picker}
           timeSelected={currentTime}
@@ -37,11 +37,12 @@ const ReadySetupModal = () => {
 };
 
 const styles = StyleSheet.create({
-  picker: {
-    justifyContent: "center",
-  },
   title: {
     textAlign: "center",
+    fontWeight: "700",
+  },
+  picker: {
+    justifyContent: "center",
   },
 });
 

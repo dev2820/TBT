@@ -41,6 +41,8 @@ const styles = StyleSheet.create({
   },
   picker: {
     justifyContent: "center",
+    alignItems: "center",
+    marginTop: 40,
   },
 });
 

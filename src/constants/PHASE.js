@@ -1,14 +1,14 @@
 export default {
   READY: {
     NAME: "ready",
-    INIT_VALUE: 5,
+    INIT_VALUE: 0,
   },
   WORK: {
     NAME: "work",
-    INIT_VALUE: 4,
+    INIT_VALUE: 0,
   },
   BREAK: {
     NAME: "break",
-    INIT_VALUE: 3,
+    INIT_VALUE: 0,
   },
 };

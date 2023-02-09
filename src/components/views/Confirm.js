@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
     fontWeight: "500",
   },
   cancelText: {
-    color: THEME.ALERT,
+    color: THEME.PLACEHOLDER,
     fontWeight: "500",
   },
 });

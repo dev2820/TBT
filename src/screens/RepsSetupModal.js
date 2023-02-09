@@ -1,45 +1,32 @@
-import React, { useState } from "react";
-import { Text, StyleSheet, TextInput } from "react-native";
-import { CenterModal, Confirm } from "@components/views";
+import React from "react";
 import { observer } from "mobx-react-lite";
 import { useModalStore } from "@store/modalStore";
 import { useSetupStore } from "@store/setupStore";
-import globalStyle from "@assets/globalStyle";
 import REPS from "@constants/REPS";
+import NumberPickerModal from "@components/NumberPickerModal";
 
 const modal = useModalStore();
 const setup = useSetupStore();
 
-const RepsSetupModal = () => {
-  const [currentNum, changeCurrentNum] = useState(setup[REPS.NAME].value);
-
-  const confirm = () => {
-    setup.changeReps(parseInt(currentNum || 0, 10));
-    modal.hideRepsSetupModal();
-  };
-  return (
-    <CenterModal
-      isVisible={modal.isRepsSetupModalVisible}
-      onBackdropPress={() => modal.hideRepsSetupModal()}
-    >
-      <Confirm onConfirm={confirm}>
-        <Text style={[globalStyle.HEADING_LARGE, styles.title]}>반복 횟수</Text>
-        <TextInput
-          style={{ height: 60 }}
-          onChangeText={changeCurrentNum}
-          value={currentNum}
-          defaultValue={currentNum.toString()}
-          keyboardType="numeric"
-        ></TextInput>
-      </Confirm>
-    </CenterModal>
-  );
+const confirm = (num) => {
+  setup.changeReps(num);
+  modal.hideRepsSetupModal();
+};
+const cancel = () => {
+  modal.hideRepsSetupModal();
 };
 
-const styles = StyleSheet.create({
-  title: {
-    textAlign: "center",
-  },
-});
+const RepsSetupModal = () => {
+  return (
+    <NumberPickerModal
+      title={"반복 횟수"}
+      isVisible={modal.isRepsSetupModalVisible}
+      confirm={confirm}
+      cancel={cancel}
+      isRotatable={true}
+      value={setup[REPS.NAME].value}
+    ></NumberPickerModal>
+  );
+};
 
 export default observer(RepsSetupModal);

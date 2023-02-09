@@ -20,7 +20,7 @@ const TimePicker = ({ style, timeSelected, onChange }) => {
       <WheelPicker
         scaleFunction={scale}
         itemTextStyle={globalStyle.HEADING_LARGE}
-        itemHeight={50}
+        itemHeight={44}
         selectedIndex={currentMin}
         containerStyle={styles.picker}
         options={TIME.MIN}
@@ -30,7 +30,7 @@ const TimePicker = ({ style, timeSelected, onChange }) => {
       <WheelPicker
         scaleFunction={scale}
         itemTextStyle={globalStyle.HEADING_LARGE}
-        itemHeight={50}
+        itemHeight={44}
         selectedIndex={currentSec}
         containerStyle={styles.picker}
         options={TIME.SEC}

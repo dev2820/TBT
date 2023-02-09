@@ -33,6 +33,16 @@ const timerStore = observable({
       }, 1000)
     );
   },
+  pause() {
+    /**
+     * 정지
+     */
+  },
+  resume() {
+    /**
+     * 재시작
+     */
+  },
   clear() {
     this.setTimer(null);
   },

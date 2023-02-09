@@ -34,22 +34,22 @@ const phaseStore = observable({
     this.cursor = 0;
     this.phases = newPhases;
   },
-  setState(state) {
+  _setState(state) {
     this.state = state;
   },
   run() {
     if (!this.currentPhase) return;
 
-    this.setState(STATE.RUN);
+    this._setState(STATE.RUN);
     timer.setTime(this.currentPhase.value);
     timer.run();
   },
   pause() {
-    this.setState(STATE.STOP);
+    this._setState(STATE.STOP);
     timer.pause();
   },
   resume() {
-    this.setState(STATE.RUN);
+    this._setState(STATE.RUN);
     timer.resume();
   },
   _next() {

@@ -13,6 +13,7 @@ const NumberPicker = ({
   step,
   onChange,
   isRotatable,
+  style,
 }) => {
   const [num, setNum] = useState(initNum);
   const [isIncreaseDisable, setIncreaseDisable] = useState(
@@ -57,7 +58,7 @@ const NumberPicker = ({
   }, [num]);
 
   return (
-    <View>
+    <View style={style}>
       <TouchableHighlight
         style={styles.button}
         onPress={increase}

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Text, StyleSheet } from "react-native";
 import { CenterModal, Confirm } from "@components/views";
 import TimePicker from "@components/TimePicker";
@@ -6,6 +6,9 @@ import globalStyle from "@assets/globalStyle";
 
 const TimePickerModal = ({ title, isVisible, confirm, cancel, value }) => {
   const [currentTime, changeCurrentTime] = useState(value);
+  useEffect(() => {
+    changeCurrentTime(value);
+  }, [value]);
   return (
     <CenterModal
       isVisible={isVisible}

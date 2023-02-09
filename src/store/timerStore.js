@@ -38,7 +38,9 @@ const timerStore = observable({
     this.setState(STATE.STOP);
     this.clear();
   },
-  resume() {},
+  resume() {
+    this.run();
+  },
   clear() {
     this.setTimer(null);
   },

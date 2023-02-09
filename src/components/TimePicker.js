@@ -4,6 +4,7 @@ import WheelPicker from "react-native-wheely";
 import TIME from "@constants/TIME";
 import globalStyle from "@assets/globalStyle";
 
+const scale = (x) => Math.pow(3 / 4, x);
 const TimePicker = ({ style, timeSelected, onChange }) => {
   const [currentMin, changeCurrentMin] = useState(
     Math.floor(timeSelected / 60)
@@ -17,7 +18,7 @@ const TimePicker = ({ style, timeSelected, onChange }) => {
   return (
     <View style={[styles.pickers, style]}>
       <WheelPicker
-        scaleFunction={(x) => Math.pow(3 / 4, x)}
+        scaleFunction={scale}
         itemTextStyle={globalStyle.HEADING_LARGE}
         itemHeight={50}
         selectedIndex={currentMin}
@@ -27,7 +28,7 @@ const TimePicker = ({ style, timeSelected, onChange }) => {
       ></WheelPicker>
       <Text style={styles.colon}>:</Text>
       <WheelPicker
-        scaleFunction={(x) => Math.pow(3 / 4, x)}
+        scaleFunction={scale}
         itemTextStyle={globalStyle.HEADING_LARGE}
         itemHeight={50}
         selectedIndex={currentSec}

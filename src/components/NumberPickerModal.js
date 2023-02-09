@@ -1,4 +1,4 @@
-import React, { useState, memo } from "react";
+import React, { useState } from "react";
 import { Text, StyleSheet } from "react-native";
 import { CenterModal, Confirm, NumberPicker } from "@components/views";
 import globalStyle from "@assets/globalStyle";

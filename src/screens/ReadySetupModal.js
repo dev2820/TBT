@@ -31,21 +31,19 @@ const ReadySetupModal = () => {
       <Confirm onConfirm={confirm}>
         <Text style={[globalStyle.HEADING_LARGE, styles.title]}>준비 시간</Text>
         <View style={styles.pickers}>
-          <View style={styles.picker}>
-            <WheelPicker
-              selectedIndex={currentMin}
-              options={TIME.MIN}
-              onChange={(min) => changeCurrentMin(min)}
-            ></WheelPicker>
-          </View>
+          <WheelPicker
+            selectedIndex={currentMin}
+            containerStyle={styles.picker}
+            options={TIME.MIN}
+            onChange={(min) => changeCurrentMin(min)}
+          ></WheelPicker>
           <Text style={{ textAlignVertical: "center" }}>:</Text>
-          <View style={styles.picker}>
-            <WheelPicker
-              selectedIndex={currentSec}
-              options={TIME.SEC}
-              onChange={(sec) => changeCurrentSec(sec)}
-            ></WheelPicker>
-          </View>
+          <WheelPicker
+            selectedIndex={currentSec}
+            containerStyle={styles.picker}
+            options={TIME.SEC}
+            onChange={(sec) => changeCurrentSec(sec)}
+          ></WheelPicker>
         </View>
       </Confirm>
     </CenterModal>

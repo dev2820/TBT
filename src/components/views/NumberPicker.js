@@ -2,6 +2,9 @@ import { useEffect, useState } from "react";
 import { TouchableHighlight, View, Text, StyleSheet } from "react-native";
 import THEME from "@constants/THEME";
 import globalStyle from "@assets/globalStyle";
+import easeInRunner from "@utils/easeInRunner";
+
+let stopContinue = null;
 
 const NumberPicker = ({
   initNum,
@@ -19,25 +22,37 @@ const NumberPicker = ({
     !isRotatable && num - step < min
   );
   const increase = () => {
-    if (isRotatable && num + step > max) {
-      setNum(num + step - max + min - 1);
-      return;
-    }
-    setNum(num + step);
+    setNum((prevNum) => {
+      if (isRotatable && prevNum + step > max) {
+        return prevNum + step - max + min - 1;
+      }
+      return prevNum + step;
+    });
+  };
+  const continuousIncrease = () => {
+    stopContinue = easeInRunner(increase, 500);
+  };
+  const stopContinueRunner = () => {
+    if (!stopContinue) return;
+    stopContinue();
+    stopContinue = null;
   };
   const decrease = () => {
-    if (isRotatable && num - step < min) {
-      setNum(num - step - min + max + 1);
-      return;
-    }
-    setNum(num - step);
+    setNum((prevNum) => {
+      if (isRotatable && prevNum - step < min) {
+        return prevNum - step - min + max + 1;
+      }
+      return prevNum - step;
+    });
+  };
+  const continuousDecrease = () => {
+    stopContinue = easeInRunner(decrease, 500);
   };
   useEffect(() => {
     if (!isRotatable) {
       setIncreaseDisable(num + step > max);
       setDecreaseDisable(num - step < min);
     }
-
     onChange(num);
   }, [num]);
 
@@ -46,6 +61,9 @@ const NumberPicker = ({
       <TouchableHighlight
         style={styles.button}
         onPress={increase}
+        delayLongPress={500}
+        onLongPress={continuousIncrease}
+        onPressOut={stopContinueRunner}
         disabled={isIncreaseDisable}
       >
         <Text
@@ -58,6 +76,9 @@ const NumberPicker = ({
       <TouchableHighlight
         style={styles.button}
         onPress={decrease}
+        delayLongPress={500}
+        onLongPress={continuousDecrease}
+        onPressOut={stopContinueRunner}
         disabled={isDecreaseDisable}
       >
         <Text

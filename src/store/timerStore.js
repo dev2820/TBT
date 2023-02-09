@@ -2,6 +2,7 @@ import { observable } from "mobx";
 
 const STATE = {
   RUN: "run",
+  STOP: "stop",
   FINISH: "finish",
 };
 
@@ -34,15 +35,10 @@ const timerStore = observable({
     );
   },
   pause() {
-    /**
-     * 정지
-     */
+    this.setState(STATE.STOP);
+    this.clear();
   },
-  resume() {
-    /**
-     * 재시작
-     */
-  },
+  resume() {},
   clear() {
     this.setTimer(null);
   },

@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { Text, View, StyleSheet, Button } from "react-native";
-import { Page } from "@components/views";
+import { Page, RoundCard } from "@components/views";
 import { observer } from "mobx-react-lite";
 import { observe } from "mobx";
 import { useTimerStore } from "@store/timerStore";
@@ -53,13 +53,34 @@ const TimerPage = ({ navigation }) => {
           <Text style={globalStyle.HEADING_SMALL}>/{phase.allRep} Reps</Text>
         </View>
         <View style={styles.player}>
-          <Button title="<" onPress={() => phase.prev()}></Button>
+          <RoundCard
+            style={[styles.smallController]}
+            onPress={() => phase.prev()}
+          >
+            <Text>{"<"}</Text>
+          </RoundCard>
+
           {phase.isRun ? (
-            <Button title="정지" onPress={() => phase.pause()}></Button>
+            <RoundCard
+              style={[styles.largeController]}
+              onPress={() => phase.pause()}
+            >
+              <Text>정지</Text>
+            </RoundCard>
           ) : (
-            <Button title="계속" onPress={() => phase.resume()}></Button>
+            <RoundCard
+              style={[styles.largeController]}
+              onPress={() => phase.resume()}
+            >
+              <Text>계속</Text>
+            </RoundCard>
           )}
-          <Button title=">" onPress={() => phase.next()}></Button>
+          <RoundCard
+            style={[styles.smallController]}
+            onPress={() => phase.next()}
+          >
+            <Text>{">"}</Text>
+          </RoundCard>
         </View>
       </View>
     </Page>
@@ -94,7 +115,20 @@ const styles = StyleSheet.create({
   },
   player: {
     flexDirection: "row",
-    height: 40,
+    alignItems: "center",
+    height: 120,
+    marginTop: 40,
+  },
+  smallController: {
+    width: 80,
+    height: 80,
+    backgroundColor: "white",
+  },
+  largeController: {
+    width: 120,
+    height: 120,
+    backgroundColor: "white",
+    marginHorizontal: 32,
   },
 });
 

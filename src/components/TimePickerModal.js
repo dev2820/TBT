@@ -17,7 +17,13 @@ const TimePickerModal = ({
   const debouncedTimerSetter = createDebounce(changeCurrentTime);
 
   return (
-    <CenterModal isVisible={isVisible} onBackdropPress={onBackdropPress}>
+    <CenterModal
+      isVisible={isVisible}
+      onBackdropPress={() => {
+        changeCurrentTime(value);
+        cancel();
+      }}
+    >
       <Confirm
         onConfirm={() => {
           confirm(currentTime);

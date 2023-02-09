@@ -20,7 +20,6 @@ const BreakSetupModal = () => {
     <TimePickerModal
       title={"휴식 시간"}
       isVisible={modal.isBreakSetupModalVisible}
-      onBackdropPress={cancel}
       confirm={confirm}
       cancel={cancel}
       value={setup[PHASE.BREAK.NAME].value}

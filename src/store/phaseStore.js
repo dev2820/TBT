@@ -43,11 +43,11 @@ const phaseStore = observable({
     this.state = state;
   },
   run() {
-    if (this.currentPhase) {
-      this.setState(STATE.RUN);
-      timer.setTime(this.currentPhase.value);
-      timer.run();
-    }
+    if (!this.currentPhase) return;
+
+    this.setState(STATE.RUN);
+    timer.setTime(this.currentPhase.value);
+    timer.run();
   },
   pause() {
     this.setState(STATE.STOP);

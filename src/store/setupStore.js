@@ -89,7 +89,7 @@ const setupStore = observable(
     settings: computed,
   }
 );
-setupStore.init();
+
 const useSetupStore = () => {
   return setupStore;
 };

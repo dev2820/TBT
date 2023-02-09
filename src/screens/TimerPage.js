@@ -71,24 +71,13 @@ const TimerPage = ({ navigation }) => {
           >
             <Text>{"<"}</Text>
           </RoundCard>
-
-          {phase.isRun ? (
-            <RoundCard
-              style={[styles.largeController]}
-              elevation={10}
-              onPress={playHandler}
-            >
-              <Text>정지</Text>
-            </RoundCard>
-          ) : (
-            <RoundCard
-              style={[styles.largeController]}
-              elevation={10}
-              onPress={playHandler}
-            >
-              <Text>계속</Text>
-            </RoundCard>
-          )}
+          <RoundCard
+            style={[styles.largeController]}
+            elevation={10}
+            onPress={playHandler}
+          >
+            <Text>{phase.isRun ? "정지" : "계속"}</Text>
+          </RoundCard>
           <RoundCard
             style={[styles.smallController]}
             elevation={10}

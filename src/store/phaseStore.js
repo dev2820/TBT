@@ -12,13 +12,11 @@ observe(timer, "state", ({ newValue }) => {
     phaseStore.nextPhase();
   }
 });
+
 const phaseStore = observable({
   phases: [],
   cursor: 0,
   init() {
-    /**
-     * setup을 기반으로 phases를 구성한다.
-     */
     const newPhases = [];
     const readyPhase = setup[PHASE.READY.NAME];
     const workPhase = setup[PHASE.WORK.NAME];
@@ -42,23 +40,14 @@ const phaseStore = observable({
     }
   },
   get currentPhase() {
-    /**
-     * 현재 수행중인 phase의 정보를 반환한다.
-     */
     if (this.cursor >= this.phases.length) return null;
     return this.phases[this.cursor];
   },
   nextPhase() {
-    /**
-     * 다음 페이즈로 이동한다.
-     */
     this.cursor++;
     this.run();
   },
   get isFinished() {
-    /**
-     * 모든 페이즈를 완료 했다면 true를 반환한다.
-     */
     return this.cursor >= this.phases.length;
   },
   get currentRep() {

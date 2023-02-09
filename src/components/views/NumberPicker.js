@@ -3,10 +3,17 @@ import { TouchableHighlight, View, Text, StyleSheet } from "react-native";
 import THEME from "@constants/THEME";
 import globalStyle from "@assets/globalStyle";
 
-const NumberPicker = ({ initNum, max = 0, min = 0, step, onChange }) => {
+const NumberPicker = ({
+  initNum,
+  max = 0,
+  min = 0,
+  step,
+  onChange,
+  isRotatable,
+}) => {
   const [num, setNum] = useState(initNum);
   const [isIncreaseDisable, setIncreaseDisable] = useState(num + step > max);
-  const [isDecreaseDisable, setDecreaseDisable] = useState(num + step < min);
+  const [isDecreaseDisable, setDecreaseDisable] = useState(num - step < min);
   const increase = () => {
     setNum(num + step);
   };

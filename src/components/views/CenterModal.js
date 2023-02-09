@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
     marginLeft: -150,
     top: "50%",
     marginTop: -180,
-    borderRadius: 16,
+    borderRadius: 30,
     overflow: "hidden",
   },
 });

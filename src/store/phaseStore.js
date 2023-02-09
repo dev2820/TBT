@@ -39,6 +39,16 @@ const phaseStore = observable({
       timer.run();
     }
   },
+  pause() {
+    /**
+     * 정지
+     */
+  },
+  resume() {
+    /**
+     * 재시작
+     */
+  },
   get currentPhase() {
     if (this.cursor >= this.phases.length) return null;
     return this.phases[this.cursor];

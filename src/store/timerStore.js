@@ -6,37 +6,43 @@ const timerStore = observable({
   timer: null,
   state: STATE.STOP,
   setTime(time) {
+    this._setTime(time);
+  },
+  run() {
+    this._run();
+  },
+  pause() {
+    this._setState(STATE.STOP);
+    this._clear();
+  },
+  resume() {
+    this.run();
+  },
+  _run() {
+    this._setState(STATE.RUN);
+    this._setTimer(
+      setInterval(() => {
+        this._setTime(this.time - 1);
+        if (this.time === 0) {
+          this._setTimer(null);
+          this._setState(STATE.FINISH);
+        }
+      }, 1000)
+    );
+  },
+  _setTime(time) {
     this.time = time;
   },
-  setTimer(newTimer) {
+  _setTimer(newTimer) {
     if (this.timer) {
       clearInterval(this.timer);
     }
     this.timer = newTimer;
   },
-  setState(state) {
+  _setState(state) {
     this.state = state;
   },
-  run() {
-    this.setState(STATE.RUN);
-    this.setTimer(
-      setInterval(() => {
-        this.setTime(this.time - 1);
-        if (this.time === 0) {
-          this.setTimer(null);
-          this.setState(STATE.FINISH);
-        }
-      }, 1000)
-    );
-  },
-  pause() {
-    this.setState(STATE.STOP);
-    this.clear();
-  },
-  resume() {
-    this.run();
-  },
-  clear() {
+  _clear() {
     this.setTimer(null);
   },
 });

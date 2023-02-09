@@ -39,7 +39,7 @@ const TimerPage = ({ navigation }) => {
   return (
     <Page style={[theme, styles.container]}>
       <View style={styles.topbar}>
-        <Button title="Home" onPress={goBack}></Button>
+        <Button style={styles.home} title="Home" onPress={goBack}></Button>
       </View>
       <View style={styles.timer}>
         <Text style={globalStyle.HEADING_LARGE}>
@@ -93,7 +93,15 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   topbar: {
+    width: "100%",
     height: 56,
+    alignItems: "flex-start",
+    justifyContent: "center",
+  },
+  home: {
+    width: 48,
+    height: 48,
+    left: 0,
   },
   text: {
     color: "green",

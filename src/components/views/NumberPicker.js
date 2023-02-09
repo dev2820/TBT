@@ -65,7 +65,7 @@ const NumberPicker = ({
         onLongPress={continuousIncrease}
         onPressOut={stopContinueRunner}
         disabled={isIncreaseDisable}
-        underlayColor="#999"
+        underlayColor={THEME.PLACEHOLDER_DARKER}
       >
         <Text
           style={[globalStyle.LABEL_LARGE, isIncreaseDisable && styles.disable]}
@@ -81,7 +81,7 @@ const NumberPicker = ({
         onLongPress={continuousDecrease}
         onPressOut={stopContinueRunner}
         disabled={isDecreaseDisable}
-        underlayColor="#999"
+        underlayColor={THEME.PLACEHOLDER_DARKER}
       >
         <Text
           style={[globalStyle.LABEL_LARGE, isDecreaseDisable && styles.disable]}

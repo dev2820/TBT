@@ -37,7 +37,7 @@ const TimerPage = ({ navigation }) => {
 
   const theme = { backgroundColor: phase.currentPhase?.theme };
   return (
-    <Page style={theme}>
+    <Page style={[theme, styles.container]}>
       <View style={styles.topbar}>
         <Button title="Home" onPress={goBack}></Button>
       </View>
@@ -52,21 +52,28 @@ const TimerPage = ({ navigation }) => {
           <Text style={[globalStyle.DISPLAY_MEDIUM]}>{phase.currentRep}</Text>
           <Text style={globalStyle.HEADING_SMALL}>/{phase.allRep} Reps</Text>
         </View>
-      </View>
-      <View>
-        <Button title=">" onPress={() => phase.next()}></Button>
-        {phase.isRun ? (
-          <Button title="정지" onPress={() => phase.pause()}></Button>
-        ) : (
-          <Button title="계속" onPress={() => phase.resume()}></Button>
-        )}
-        <Button title="<" onPress={() => phase.prev()}></Button>
+        <View>
+          <Button title=">" onPress={() => phase.next()}></Button>
+          {phase.isRun ? (
+            <Button title="정지" onPress={() => phase.pause()}></Button>
+          ) : (
+            <Button title="계속" onPress={() => phase.resume()}></Button>
+          )}
+          <Button title="<" onPress={() => phase.prev()}></Button>
+        </View>
       </View>
     </Page>
   );
 };
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: "center",
+  },
+  topbar: {
+    height: 56,
+  },
   text: {
     color: "green",
   },
@@ -84,9 +91,6 @@ const styles = StyleSheet.create({
     height: 44,
     flexDirection: "row",
     alignItems: "baseline",
-  },
-  topbar: {
-    height: 56,
   },
 });
 

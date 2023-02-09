@@ -22,7 +22,7 @@ const WorkSetupModal = () => {
       isVisible={modal.isWorkSetupModalVisible}
       confirm={confirm}
       cancel={cancel}
-      value={setup[PHASE.BREAK.NAME].value}
+      value={setup[PHASE.WORK.NAME].value}
     ></TimePickerModal>
   );
 };

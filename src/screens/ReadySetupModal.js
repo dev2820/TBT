@@ -22,7 +22,7 @@ const ReadySetupModal = () => {
       isVisible={modal.isReadySetupModalVisible}
       confirm={confirm}
       cancel={cancel}
-      value={setup[PHASE.BREAK.NAME].value}
+      value={setup[PHASE.READY.NAME].value}
     ></TimePickerModal>
   );
 };

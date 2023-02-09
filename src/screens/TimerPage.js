@@ -19,6 +19,17 @@ const clearTimer = () => {
   timer.clear();
 };
 
+const playHandler = () => {
+  if (phase.isRun) phase.pause();
+  else phase.resume();
+};
+const prevHandler = () => {
+  phase.prev();
+};
+const nextHandler = () => {
+  phase.next();
+};
+
 const TimerPage = ({ navigation }) => {
   const goBack = () => {
     clearTimer();
@@ -56,7 +67,7 @@ const TimerPage = ({ navigation }) => {
           <RoundCard
             style={[styles.smallController]}
             elevation={10}
-            onPress={() => phase.prev()}
+            onPress={prevHandler}
           >
             <Text>{"<"}</Text>
           </RoundCard>
@@ -65,7 +76,7 @@ const TimerPage = ({ navigation }) => {
             <RoundCard
               style={[styles.largeController]}
               elevation={10}
-              onPress={() => phase.pause()}
+              onPress={playHandler}
             >
               <Text>정지</Text>
             </RoundCard>
@@ -73,7 +84,7 @@ const TimerPage = ({ navigation }) => {
             <RoundCard
               style={[styles.largeController]}
               elevation={10}
-              onPress={() => phase.resume()}
+              onPress={playHandler}
             >
               <Text>계속</Text>
             </RoundCard>
@@ -81,7 +92,7 @@ const TimerPage = ({ navigation }) => {
           <RoundCard
             style={[styles.smallController]}
             elevation={10}
-            onPress={() => phase.next()}
+            onPress={nextHandler}
           >
             <Text>{">"}</Text>
           </RoundCard>

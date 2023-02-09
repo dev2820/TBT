@@ -111,7 +111,7 @@ const styles = StyleSheet.create({
     top: 88,
   },
   time: {
-    height: 380,
+    height: 300,
     textAlignVertical: "center",
     fontWeight: "700",
     letterSpacing: 8,
@@ -125,7 +125,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     height: 120,
-    marginTop: 40,
+    marginTop: 80,
   },
   smallController: {
     width: 80,

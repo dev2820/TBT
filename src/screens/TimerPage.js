@@ -60,6 +60,7 @@ const TimerPage = ({ navigation }) => {
         ) : (
           <Button title="계속" onPress={() => phase.resume()}></Button>
         )}
+        <Button title="<" onPress={() => phase.prev()}></Button>
       </View>
     </Page>
   );

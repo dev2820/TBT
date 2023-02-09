@@ -9,9 +9,13 @@ const timer = useTimerStore();
 const setup = useSetupStore();
 
 observe(timer, "state", ({ newValue }) => {
-  if (newValue === STATE.FINISH) {
-    phaseStore.nextPhase();
+  if (newValue !== STATE.FINISH) return;
+
+  if (phaseStore.cursor >= phaseStore.phases.length) {
+    phaseStore.setState(STATE.FINISH);
+    return;
   }
+  phaseStore.nextPhase();
 });
 
 const phaseStore = observable({
@@ -62,7 +66,7 @@ const phaseStore = observable({
     this.run();
   },
   get isFinished() {
-    return this.cursor >= this.phases.length;
+    return this.state === STATE.FINISH;
   },
   get currentRep() {
     return Math.ceil(this.cursor / 2);

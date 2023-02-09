@@ -19,12 +19,15 @@ const ReadySetupModal = () => {
     setup.changeReadyTime(currentTime);
     modal.hideReadySetupModal();
   };
+  const cancel = () => {
+    modal.hideReadySetupModal();
+  };
   return (
     <CenterModal
       isVisible={modal.isReadySetupModalVisible}
-      onBackdropPress={() => modal.hideReadySetupModal()}
+      onBackdropPress={cancel}
     >
-      <Confirm onConfirm={confirm}>
+      <Confirm onConfirm={confirm} onCancel={cancel}>
         <Text style={[globalStyle.HEADING_SMALL, styles.title]}>준비 시간</Text>
         <TimePicker
           style={styles.picker}

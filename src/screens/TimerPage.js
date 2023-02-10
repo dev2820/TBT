@@ -7,6 +7,7 @@ import { useTimerStore } from "@store/timerStore";
 import { usePhaseStore } from "@store/phaseStore";
 import globalStyle from "@assets/globalStyle";
 import formatTime from "@utils/formatTime";
+import Player from "@components/Player";
 
 const phase = usePhaseStore();
 const timer = useTimerStore();
@@ -17,17 +18,6 @@ const clearTimer = () => {
     diposer = null;
   }
   timer.clear();
-};
-
-const playHandler = () => {
-  if (phase.isRun) phase.pause();
-  else phase.resume();
-};
-const prevHandler = () => {
-  phase.prev();
-};
-const nextHandler = () => {
-  phase.next();
 };
 
 const TimerPage = ({ navigation }) => {
@@ -63,29 +53,13 @@ const TimerPage = ({ navigation }) => {
           <Text style={[globalStyle.DISPLAY_MEDIUM]}>{phase.currentRep}</Text>
           <Text style={globalStyle.HEADING_SMALL}>/{phase.allRep} Reps</Text>
         </View>
-        <View style={styles.player}>
-          <RoundCard
-            style={[styles.smallController]}
-            elevation={10}
-            onPress={prevHandler}
-          >
-            <Text>{"<"}</Text>
-          </RoundCard>
-          <RoundCard
-            style={[styles.largeController]}
-            elevation={10}
-            onPress={playHandler}
-          >
-            <Text>{phase.isRun ? "정지" : "계속"}</Text>
-          </RoundCard>
-          <RoundCard
-            style={[styles.smallController]}
-            elevation={10}
-            onPress={nextHandler}
-          >
-            <Text>{">"}</Text>
-          </RoundCard>
-        </View>
+        <Player
+          prev={() => phase.prev()}
+          next={() => phase.next()}
+          pause={() => phase.pause()}
+          play={() => phase.resume()}
+          isRun={phase.isRun}
+        ></Player>
       </View>
     </Page>
   );

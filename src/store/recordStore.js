@@ -5,9 +5,15 @@ import RECORD from "@constants/RECORD";
 const recordStore = observable({
   records: [],
   async loadRecords() {
-    const loaded = (await storage.read(RECORD.STORAGE_KEY)) ?? [];
+    const loadedRecords = (await storage.read(RECORD.STORAGE_KEY)) ?? [];
     runInAction(() => {
-      this.records = loaded;
+      this.records = loadedRecords.map((record) => {
+        return {
+          date: new Date(record.date),
+          setup: record.setup,
+          memo: record.memo,
+        };
+      });
     });
   },
   addRecord(date, setup, memo) {
@@ -20,11 +26,11 @@ const recordStore = observable({
     this.records = [...this.records, record];
   },
   removeRecord(index) {
-    // this.records = [
-    //   ...this.records.slice(0, index),
-    //   ...this.records.slice(index + 1),
-    // ];
-    this.records.splice(index, 1);
+    this.records = [
+      ...this.records.slice(0, index),
+      ...this.records.slice(index + 1),
+    ];
+    // this.records.splice(index, 1);
   },
 });
 

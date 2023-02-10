@@ -8,6 +8,7 @@ import RoundCard from "@components/views/RoundCard";
 import NumberPicker from "@components/views/NumberPicker";
 import Divider from "@components/views/Divider";
 import FilledButton from "@components/views/FilledButton";
+import Record from "@components/views/Record";
 
 export {
   Card,
@@ -20,4 +21,5 @@ export {
   NumberPicker,
   Divider,
   FilledButton,
+  Record,
 };

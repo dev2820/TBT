@@ -6,6 +6,7 @@ import * as SplashScreen from "expo-splash-screen";
 import HomePage from "@screens/HomePage";
 import TimerPage from "@screens/TimerPage";
 import FinishPage from "@screens/FinishPage";
+import RecordPage from "@screens/RecordPage";
 import { useSetupStore } from "@store/setupStore";
 import { useRecordStore } from "@store/recordStore";
 
@@ -51,6 +52,7 @@ export default () => {
         <Stack.Screen name="Home" component={HomePage} />
         <Stack.Screen name="Timer" component={TimerPage} />
         <Stack.Screen name="Finish" component={FinishPage} />
+        <Stack.Screen name="Record" component={RecordPage} />
       </Stack.Navigator>
     </NavigationContainer>
   );

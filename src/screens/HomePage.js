@@ -18,6 +18,9 @@ const HomePage = ({ navigation }) => {
     phase.init();
     navigation.navigate("Timer");
   };
+  const gotoRecord = () => {
+    navigation.push("Record");
+  };
   return (
     <Page style={styles.container}>
       <Title>🔥 TBT 🔥</Title>
@@ -26,6 +29,9 @@ const HomePage = ({ navigation }) => {
         <Text style={[globalStyle.HEADING_LARGE, globalStyle.ON_PRIMARY]}>
           START
         </Text>
+      </Card>
+      <Card style={styles.toRecordButton} onPress={gotoRecord}>
+        <Text style={globalStyle.HEADING_SMALL}>기록 보기</Text>
       </Card>
       <ReadySetupModal></ReadySetupModal>
       <BreakSetupModal></BreakSetupModal>
@@ -46,6 +52,14 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: THEME.PRIMARY,
+    marginBottom: 24,
+  },
+  toRecordButton: {
+    width: 340,
+    height: 60,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: THEME.PLACEHOLDER,
   },
 });
 

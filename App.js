@@ -5,6 +5,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import * as SplashScreen from "expo-splash-screen";
 import HomePage from "@screens/HomePage";
 import TimerPage from "@screens/TimerPage";
+import FinishPage from "@screens/FinishPage";
 import { useSetupStore } from "@store/setupStore";
 
 const Stack = createNativeStackNavigator();
@@ -45,6 +46,7 @@ export default () => {
       >
         <Stack.Screen name="Home" component={HomePage} />
         <Stack.Screen name="Timer" component={TimerPage} />
+        <Stack.Screen name="Finish" component={FinishPage} />
       </Stack.Navigator>
     </NavigationContainer>
   );

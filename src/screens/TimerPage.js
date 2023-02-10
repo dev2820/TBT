@@ -23,7 +23,7 @@ const clearTimer = () => {
 const TimerPage = ({ navigation }) => {
   const goBack = () => {
     clearTimer();
-    navigation.pop();
+    navigation.navigate("Finish");
   };
   useEffect(() => {
     phase.run();

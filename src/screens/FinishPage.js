@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, View, StyleSheet } from "react-native";
+import { Text, View, StyleSheet, TextInput } from "react-native";
 import { Page, Divider, FilledButton } from "@components/views";
 import { usePhaseStore } from "@store/phaseStore";
 import formatTime from "@utils/formatTime";
@@ -15,41 +15,46 @@ const TimerPage = ({ navigation }) => {
 
   return (
     <Page style={styles.container}>
-      <Text style={[globalStyle.HEADING_LARGE, styles.title]}>🎉 완료 🎉</Text>
-      <View style={styles.result}>
-        <View style={styles.item}>
-          <Text style={globalStyle.TITLE_MEDIUM}>준비 시간</Text>
-          <Text style={globalStyle.TITLE_MEDIUM}>
-            {formatTime(phase.totalReadyTime)}
-          </Text>
+      <View style={styles.center}>
+        <Text style={[globalStyle.HEADING_LARGE, styles.title]}>
+          🎉 완료 🎉
+        </Text>
+        <View style={styles.result}>
+          <View style={styles.item}>
+            <Text style={globalStyle.TITLE_MEDIUM}>준비 시간</Text>
+            <Text style={globalStyle.TITLE_MEDIUM}>
+              {formatTime(phase.totalReadyTime)}
+            </Text>
+          </View>
+          <View style={styles.item}>
+            <Text style={globalStyle.TITLE_MEDIUM}>운동 시간</Text>
+            <Text style={globalStyle.TITLE_MEDIUM}>
+              {formatTime(phase.totalWorkTime)}
+            </Text>
+          </View>
+          <View style={styles.item}>
+            <Text style={globalStyle.TITLE_MEDIUM}>휴식 시간</Text>
+            <Text style={globalStyle.TITLE_MEDIUM}>
+              {formatTime(phase.totalBreakTime)}
+            </Text>
+          </View>
+          <Divider color={THEME.PLACEHOLDER_DARKER}></Divider>
+          <View style={styles.item}>
+            <Text style={globalStyle.TITLE_MEDIUM}>총합</Text>
+            <Text style={globalStyle.TITLE_MEDIUM}>
+              {formatTime(phase.totalTime)}
+            </Text>
+          </View>
+          <TextInput style={styles.memo}></TextInput>
         </View>
-        <View style={styles.item}>
-          <Text style={globalStyle.TITLE_MEDIUM}>운동 시간</Text>
-          <Text style={globalStyle.TITLE_MEDIUM}>
-            {formatTime(phase.totalWorkTime)}
-          </Text>
-        </View>
-        <View style={styles.item}>
-          <Text style={globalStyle.TITLE_MEDIUM}>휴식 시간</Text>
-          <Text style={globalStyle.TITLE_MEDIUM}>
-            {formatTime(phase.totalBreakTime)}
-          </Text>
-        </View>
-        <Divider color={THEME.PLACEHOLDER_DARKER}></Divider>
-        <View style={styles.item}>
-          <Text style={globalStyle.TITLE_MEDIUM}>총합</Text>
-          <Text style={globalStyle.TITLE_MEDIUM}>
-            {formatTime(phase.totalTime)}
-          </Text>
-        </View>
+        <FilledButton
+          onPress={goHome}
+          title="확인"
+          theme={THEME.PRIMARY}
+          textTheme={THEME.ON_PRIMARY}
+          style={styles.confirm}
+        ></FilledButton>
       </View>
-      <FilledButton
-        onPress={goHome}
-        title="확인"
-        theme={THEME.PRIMARY}
-        textTheme={THEME.ON_PRIMARY}
-        style={styles.confirm}
-      ></FilledButton>
     </Page>
   );
 };
@@ -57,10 +62,14 @@ const TimerPage = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     alignItems: "center",
+    justifyContent: "center",
+  },
+  center: {
+    width: "100%",
+    alignItems: "center",
   },
   title: {
     textAlign: "center",
-    marginTop: 160,
   },
   item: {
     flexDirection: "row",
@@ -69,16 +78,14 @@ const styles = StyleSheet.create({
   },
   result: {
     width: "80%",
-    position: "absolute",
     height: 360,
-    top: "50%",
-    marginTop: -180,
     justifyContent: "center",
   },
+  memo: {
+    borderColor: THEME.PLACEHOLDER,
+  },
   confirm: {
-    position: "absolute",
     width: "80%",
-    bottom: 160,
     height: 60,
   },
 });

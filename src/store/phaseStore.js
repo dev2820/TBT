@@ -97,6 +97,24 @@ const phaseStore = observable({
   get isRun() {
     return this.state === STATE.RUN;
   },
+  get totalReadyTime() {
+    return this.phases
+      .filter((phase) => phase.key === PHASE.READY.NAME)
+      .reduce((acc, phase) => acc + phase.value, 0);
+  },
+  get totalWorkTime() {
+    return this.phases
+      .filter((phase) => phase.key === PHASE.WORK.NAME)
+      .reduce((acc, phase) => acc + phase.value, 0);
+  },
+  get totalBreakTime() {
+    return this.phases
+      .filter((phase) => phase.key === PHASE.BREAK.NAME)
+      .reduce((acc, phase) => acc + phase.value, 0);
+  },
+  get totalTime() {
+    return this.totalReadyTime + this.totalWorkTime + this.totalBreakTime;
+  },
 });
 
 const usePhaseStore = () => {

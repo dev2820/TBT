@@ -6,6 +6,8 @@ export default {
   PRIMARY: "#0000FF",
   PRIMARY_LIGHTER: "rgba(0,0,255,0.75)",
   ALERT: "#FC4D4D",
+  SUN: "#FC4D4D",
+  SAT: "#33B5E5",
   PLACEHOLDER: "#EEEEEE",
   PLACEHOLDER_DARKER: "#CCCCCC",
   ON_PRIMARY: "rgba(255,255,255,1)",

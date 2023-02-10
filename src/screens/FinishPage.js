@@ -1,27 +1,18 @@
-import React, { useEffect, useState } from "react";
-import { Text, View, StyleSheet, TextInput } from "react-native";
+import React, { useEffect } from "react";
+import { Text, View, StyleSheet } from "react-native";
 import { Page, Divider, FilledButton } from "@components/views";
 import { usePhaseStore } from "@store/phaseStore";
-import { useRecordStore } from "@store/recordStore";
 import formatTime from "@utils/formatTime";
 import formatDate from "@utils/formatDate";
 import globalStyle from "@assets/globalStyle";
 import THEME from "@constants/THEME";
-import PHASE from "@constants/PHASE";
 
 const phase = usePhaseStore();
-const record = useRecordStore();
 
 const FinishPage = ({ navigation }) => {
-  const [memo, setMemo] = useState("");
   const finishDate = new Date();
-  const currentSetup = {
-    [PHASE.READY.NAME]: phase.totalReadyTime,
-    [PHASE.WORK.NAME]: phase.totalWorkTime,
-    [PHASE.BREAK.NAME]: phase.totalBreakTime,
-  };
+
   const confirmHandler = () => {
-    record.addRecord(finishDate, currentSetup, memo);
     navigation.navigate("Home");
   };
   useEffect(() => {
@@ -66,13 +57,6 @@ const FinishPage = ({ navigation }) => {
               {formatTime(phase.totalTime)}
             </Text>
           </View>
-          <TextInput
-            multiline
-            numberOfLines={4}
-            style={styles.memo}
-            placeholder={"운동에 대한 기록을 남기세요"}
-            onChangeText={setMemo}
-          ></TextInput>
         </View>
         <FilledButton
           onPress={confirmHandler}
@@ -109,17 +93,9 @@ const styles = StyleSheet.create({
   },
   result: {
     width: "80%",
-    marginVertical: 48,
+    marginTop: 48,
+    marginBottom: 96,
     justifyContent: "center",
-  },
-  memo: {
-    marginTop: 16,
-    borderColor: THEME.PLACEHOLDER_DARKER,
-    borderWidth: 2,
-    borderRadius: 16,
-    padding: 16,
-    textAlign: "left",
-    textAlignVertical: "top",
   },
   confirm: {
     width: "80%",

@@ -46,6 +46,16 @@ const globalStyle = StyleSheet.create({
     lineHeight: 20,
     fontWeight: "500",
   },
+  LABEL_LARGE: {
+    fontSize: 14,
+    lineHeight: 20,
+    fontWeight: "500",
+  },
+  LABEL_SMALL: {
+    fontSize: 11,
+    lineHeight: 16,
+    fontWeight: "500",
+  },
   ON_PRIMARY: {
     color: "#ffffff",
   },

@@ -45,7 +45,10 @@ const TimerPage = ({ navigation }) => {
               {formatTime(phase.totalTime)}
             </Text>
           </View>
-          <TextInput style={styles.memo}></TextInput>
+          <TextInput
+            style={styles.memo}
+            placeholder={"운동에 대한 기록을 남기세요"}
+          ></TextInput>
         </View>
         <FilledButton
           onPress={goHome}
@@ -82,7 +85,11 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   memo: {
+    marginTop: 16,
     borderColor: THEME.PLACEHOLDER,
+    borderWidth: 2,
+    borderRadius: 16,
+    padding: 16,
   },
   confirm: {
     width: "80%",

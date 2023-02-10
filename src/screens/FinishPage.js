@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Text, View, StyleSheet, TextInput } from "react-native";
 import { Page, Divider, FilledButton } from "@components/views";
 import { usePhaseStore } from "@store/phaseStore";
@@ -11,8 +11,14 @@ const phase = usePhaseStore();
 
 const TimerPage = ({ navigation }) => {
   const goHome = () => {
-    navigation.popToTop();
+    navigation.navigate("Home");
   };
+  useEffect(() => {
+    navigation.addListener("beforeRemove", (e) => {
+      if (e.data.action.type === "NAVIGATE") return;
+      e.preventDefault();
+    });
+  }, [navigation]);
 
   return (
     <Page style={styles.container}>

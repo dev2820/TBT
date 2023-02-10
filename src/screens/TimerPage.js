@@ -24,6 +24,10 @@ const clearTimer = () => {
 const TimerPage = ({ navigation }) => {
   const goBack = () => {
     clearTimer();
+    navigation.navigate("Home");
+  };
+  const goFinish = () => {
+    clearTimer();
     navigation.navigate("Finish");
   };
   useEffect(() => {
@@ -32,10 +36,16 @@ const TimerPage = ({ navigation }) => {
 
     diposer = observe(phase, "isFinished", ({ newValue }) => {
       if (newValue === true) {
-        goBack();
+        goFinish();
       }
     });
   }, []);
+  useEffect(() => {
+    navigation.addListener("beforeRemove", (e) => {
+      if (e.data.action.type === "NAVIGATE") return;
+      e.preventDefault();
+    });
+  }, [navigation]);
 
   const theme = { backgroundColor: phase.currentPhase?.theme ?? THEME.WORK };
   return (

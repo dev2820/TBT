@@ -7,6 +7,7 @@ import Confirm from "@components/views/Confirm";
 import RoundCard from "@components/views/RoundCard";
 import NumberPicker from "@components/views/NumberPicker";
 import Divider from "@components/views/Divider";
+import FilledButton from "@components/views/FilledButton";
 
 export {
   Card,
@@ -18,4 +19,5 @@ export {
   RoundCard,
   NumberPicker,
   Divider,
+  FilledButton,
 };

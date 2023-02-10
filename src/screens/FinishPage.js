@@ -1,6 +1,6 @@
 import React from "react";
-import { Text, Button, View, StyleSheet } from "react-native";
-import { Page, Divider } from "@components/views";
+import { Text, View, StyleSheet } from "react-native";
+import { Page, Divider, FilledButton } from "@components/views";
 import { usePhaseStore } from "@store/phaseStore";
 import formatTime from "@utils/formatTime";
 import globalStyle from "@assets/globalStyle";
@@ -33,7 +33,13 @@ const TimerPage = ({ navigation }) => {
         <Text>총합</Text>
         <Text>{formatTime(phase.totalTime)}</Text>
       </View>
-      <Button onPress={goHome} title="확인"></Button>
+      <FilledButton
+        onPress={goHome}
+        title="확인"
+        theme={THEME.PRIMARY}
+        textTheme={THEME.ON_PRIMARY}
+        style={{ width: "100%", height: 60 }}
+      ></FilledButton>
     </Page>
   );
 };

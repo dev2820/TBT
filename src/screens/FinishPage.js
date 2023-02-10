@@ -1,5 +1,5 @@
-import React, { useEffect } from "react";
-import { Text, View, StyleSheet } from "react-native";
+import React, { useEffect, useState } from "react";
+import { Text, View, StyleSheet, Dimensions } from "react-native";
 import { Page, Divider, FilledButton } from "@components/views";
 import { usePhaseStore } from "@store/phaseStore";
 import formatTime from "@utils/formatTime";
@@ -8,10 +8,20 @@ import globalStyle from "@assets/globalStyle";
 import THEME from "@constants/THEME";
 
 const phase = usePhaseStore();
-
 const FinishPage = ({ navigation }) => {
+  const window = Dimensions.get("window");
   const finishDate = new Date();
-
+  const [isTitleVisible, setTitleVisible] = useState(window.height >= 500);
+  const [between, setBetween] = useState(window.height < 500 ? 8 : 48);
+  Dimensions.addEventListener("change", (e) => {
+    if (e.window.height < 500) {
+      setTitleVisible(false);
+      setBetween(8);
+    } else {
+      setTitleVisible(true);
+      setBetween(48);
+    }
+  });
   const confirmHandler = () => {
     navigation.navigate("Home");
   };
@@ -25,13 +35,15 @@ const FinishPage = ({ navigation }) => {
   return (
     <Page style={styles.container}>
       <View style={styles.center}>
-        <Text style={[globalStyle.HEADING_LARGE, styles.title]}>
-          🎉 완료 🎉
-        </Text>
+        {isTitleVisible && (
+          <Text style={[globalStyle.HEADING_LARGE, styles.title]}>
+            🎉 완료 🎉
+          </Text>
+        )}
         <Text style={[globalStyle.TITLE_MEDIUM, styles.date]}>
           {formatDate(finishDate)}
         </Text>
-        <View style={styles.result}>
+        <View style={[styles.result, { marginVertical: between }]}>
           <View style={styles.item}>
             <Text style={globalStyle.TITLE_MEDIUM}>준비 시간</Text>
             <Text style={globalStyle.TITLE_MEDIUM}>
@@ -93,8 +105,7 @@ const styles = StyleSheet.create({
   },
   result: {
     width: "80%",
-    marginTop: 48,
-    marginBottom: 96,
+    marginVertical: 48,
     justifyContent: "center",
   },
   confirm: {

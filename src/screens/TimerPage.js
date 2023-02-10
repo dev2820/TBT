@@ -1,6 +1,6 @@
-import React, { useEffect } from "react";
-import { Text, View, StyleSheet, Button } from "react-native";
-import { Page, RoundCard } from "@components/views";
+import React, { useEffect, useState } from "react";
+import { Text, View, StyleSheet, Button, Dimensions } from "react-native";
+import { Page } from "@components/views";
 import { observer } from "mobx-react-lite";
 import { observe } from "mobx";
 import { useTimerStore } from "@store/timerStore";
@@ -22,6 +22,25 @@ const clearTimer = () => {
 };
 
 const TimerPage = ({ navigation }) => {
+  const window = Dimensions.get("window");
+  const [isRepsPositionBotton, setRepsPositionBottom] = useState(
+    window.height >= 500
+  );
+  const [timerTop, setTimerTop] = useState(
+    Math.floor(Math.min(window.height / 20, 88))
+  );
+  const [timerHeight, setTimerHeight] = useState(
+    Math.floor(Math.min(window.height / 2.8, 300))
+  );
+  Dimensions.addEventListener("change", (e) => {
+    if (e.window.height < 500) {
+      setRepsPositionBottom(false);
+    } else {
+      setRepsPositionBottom(true);
+    }
+    setTimerTop(Math.floor(Math.min(e.window.height / 20, 88)));
+    setTimerHeight(Math.floor(Math.min(e.window.height / 2.8, 300)));
+  });
   const goBack = () => {
     clearTimer();
     navigation.navigate("Home");
@@ -53,17 +72,26 @@ const TimerPage = ({ navigation }) => {
       <View style={styles.topbar}>
         <Button style={styles.home} title="Home" onPress={goBack}></Button>
       </View>
-      <View style={styles.timer}>
-        <Text style={globalStyle.HEADING_LARGE}>
+      <View style={[styles.timer, { top: timerTop }]}>
+        <Text style={globalStyle.TITLE_LARGE}>
           {phase.currentPhase?.name}
+          {!isRepsPositionBotton && ` ${phase.currentRep}/${phase.allRep} Reps`}
         </Text>
-        <Text style={[globalStyle.DISPLAY_EXTRA_LARGE, styles.time]}>
+        <Text
+          style={[
+            globalStyle.DISPLAY_EXTRA_LARGE,
+            styles.time,
+            { height: timerHeight },
+          ]}
+        >
           {formatTime(timer.time)}
         </Text>
-        <View style={styles.reps}>
-          <Text style={[globalStyle.DISPLAY_MEDIUM]}>{phase.currentRep}</Text>
-          <Text style={globalStyle.HEADING_SMALL}>/{phase.allRep} Reps</Text>
-        </View>
+        {isRepsPositionBotton && (
+          <View style={styles.reps}>
+            <Text style={[globalStyle.DISPLAY_MEDIUM]}>{phase.currentRep}</Text>
+            <Text style={globalStyle.HEADING_SMALL}>/{phase.allRep} Reps</Text>
+          </View>
+        )}
         <Player
           prev={() => phase.prev()}
           next={() => phase.next()}
@@ -92,12 +120,9 @@ const styles = StyleSheet.create({
     height: 48,
     left: 0,
   },
-  text: {
-    color: "green",
-  },
   timer: {
     alignItems: "center",
-    top: 88,
+    justifyContent: "center",
   },
   time: {
     height: 300,
@@ -109,23 +134,6 @@ const styles = StyleSheet.create({
     height: 44,
     flexDirection: "row",
     alignItems: "baseline",
-  },
-  player: {
-    flexDirection: "row",
-    alignItems: "center",
-    height: 120,
-    marginTop: 80,
-  },
-  smallController: {
-    width: 80,
-    height: 80,
-    backgroundColor: "white",
-  },
-  largeController: {
-    width: 120,
-    height: 120,
-    backgroundColor: "white",
-    marginHorizontal: 32,
   },
 });
 

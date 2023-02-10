@@ -14,8 +14,11 @@ import THEME from "@constants/THEME";
 const phase = usePhaseStore();
 
 const HomePage = ({ navigation }) => {
-  const [isTitleVisible, setTitleVisible] = useState(true);
-  const [buttonHeight, setButtonHeight] = useState(100);
+  const window = Dimensions.get("window");
+  const [isTitleVisible, setTitleVisible] = useState(window.height >= 400);
+  const [buttonHeight, setButtonHeight] = useState(
+    Math.floor(Math.min((window.height / 2) * 0.5, 100))
+  );
   Dimensions.addEventListener("change", (e) => {
     if (e.window.height < 400) {
       setTitleVisible(false);

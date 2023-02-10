@@ -56,12 +56,12 @@ const phaseStore = observable({
     this._prev();
   },
   _next() {
-    this.cursor++;
-    if (this.cursor >= this.phases.length) {
+    if (this.cursor + 1 >= this.phases.length) {
       this._setState(STATE.FINISH);
       return;
     }
 
+    this.cursor++;
     this.run();
   },
   _prev() {

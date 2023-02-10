@@ -3,7 +3,7 @@ import STATE from "@constants/STATE";
 
 const timerStore = observable({
   time: 0,
-  timer: null,
+  _timer: null,
   state: STATE.STOP,
   setTime(time) {
     this._setTime(time);
@@ -38,10 +38,10 @@ const timerStore = observable({
     this.time = time;
   },
   _setTimer(newTimer) {
-    if (this.timer) {
-      clearInterval(this.timer);
+    if (this._timer) {
+      clearInterval(this._timer);
     }
-    this.timer = newTimer;
+    this._timer = newTimer;
   },
   _setState(state) {
     this.state = state;

@@ -8,6 +8,7 @@ import { usePhaseStore } from "@store/phaseStore";
 import globalStyle from "@assets/globalStyle";
 import formatTime from "@utils/formatTime";
 import Player from "@components/Player";
+import THEME from "@constants/THEME";
 
 const phase = usePhaseStore();
 const timer = useTimerStore();
@@ -36,7 +37,7 @@ const TimerPage = ({ navigation }) => {
     });
   }, []);
 
-  const theme = { backgroundColor: phase.currentPhase?.theme };
+  const theme = { backgroundColor: phase.currentPhase?.theme ?? THEME.WORK };
   return (
     <Page style={[theme, styles.container]}>
       <View style={styles.topbar}>

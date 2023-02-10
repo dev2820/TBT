@@ -1,16 +1,27 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Text, View, StyleSheet, TextInput } from "react-native";
 import { Page, Divider, FilledButton } from "@components/views";
 import { usePhaseStore } from "@store/phaseStore";
+import { useRecordStore } from "@store/recordStore";
 import formatTime from "@utils/formatTime";
 import formatDate from "@utils/formatDate";
 import globalStyle from "@assets/globalStyle";
 import THEME from "@constants/THEME";
+import PHASE from "@constants/PHASE";
 
 const phase = usePhaseStore();
+const record = useRecordStore();
 
-const TimerPage = ({ navigation }) => {
-  const goHome = () => {
+const FinishPage = ({ navigation }) => {
+  const [memo, setMemo] = useState("");
+  const finishDate = new Date();
+  const currentSetup = {
+    [PHASE.READY.NAME]: phase.totalReadyTime,
+    [PHASE.WORK.NAME]: phase.totalWorkTime,
+    [PHASE.BREAK.NAME]: phase.totalBreakTime,
+  };
+  const confirmHandler = () => {
+    record.addRecord(finishDate, currentSetup, memo);
     navigation.navigate("Home");
   };
   useEffect(() => {
@@ -27,7 +38,7 @@ const TimerPage = ({ navigation }) => {
           🎉 완료 🎉
         </Text>
         <Text style={[globalStyle.TITLE_MEDIUM, styles.date]}>
-          {formatDate(new Date())}
+          {formatDate(finishDate)}
         </Text>
         <View style={styles.result}>
           <View style={styles.item}>
@@ -60,10 +71,11 @@ const TimerPage = ({ navigation }) => {
             numberOfLines={4}
             style={styles.memo}
             placeholder={"운동에 대한 기록을 남기세요"}
+            onChangeText={setMemo}
           ></TextInput>
         </View>
         <FilledButton
-          onPress={goHome}
+          onPress={confirmHandler}
           title="확인"
           theme={THEME.PRIMARY}
           textTheme={THEME.ON_PRIMARY}
@@ -114,4 +126,4 @@ const styles = StyleSheet.create({
     height: 60,
   },
 });
-export default TimerPage;
+export default FinishPage;

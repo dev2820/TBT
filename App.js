@@ -7,9 +7,12 @@ import HomePage from "@screens/HomePage";
 import TimerPage from "@screens/TimerPage";
 import FinishPage from "@screens/FinishPage";
 import { useSetupStore } from "@store/setupStore";
+import { useRecordStore } from "@store/recordStore";
 
 const Stack = createNativeStackNavigator();
 const setup = useSetupStore();
+const record = useRecordStore();
+
 SplashScreen.preventAutoHideAsync();
 
 export default () => {
@@ -18,6 +21,7 @@ export default () => {
     const prepare = async () => {
       try {
         await setup.init();
+        await record.loadRecords();
       } catch (e) {
         console.warn(e);
       } finally {

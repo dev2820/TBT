@@ -9,6 +9,7 @@ const timerStore = observable({
     this._setTime(time);
   },
   run() {
+    this.clear();
     this._run();
   },
   clear() {

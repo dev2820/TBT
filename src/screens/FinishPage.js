@@ -114,7 +114,7 @@ const styles = StyleSheet.create({
   },
   memo: {
     marginTop: 16,
-    borderColor: THEME.PLACEHOLDER,
+    borderColor: THEME.PLACEHOLDER_DARKER,
     borderWidth: 2,
     borderRadius: 16,
     padding: 16,

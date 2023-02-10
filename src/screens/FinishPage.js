@@ -3,6 +3,7 @@ import { Text, View, StyleSheet, TextInput } from "react-native";
 import { Page, Divider, FilledButton } from "@components/views";
 import { usePhaseStore } from "@store/phaseStore";
 import formatTime from "@utils/formatTime";
+import formatDate from "@utils/formatDate";
 import globalStyle from "@assets/globalStyle";
 import THEME from "@constants/THEME";
 
@@ -18,6 +19,9 @@ const TimerPage = ({ navigation }) => {
       <View style={styles.center}>
         <Text style={[globalStyle.HEADING_LARGE, styles.title]}>
           🎉 완료 🎉
+        </Text>
+        <Text style={[globalStyle.TITLE_MEDIUM, styles.date]}>
+          {formatDate(new Date())}
         </Text>
         <View style={styles.result}>
           <View style={styles.item}>
@@ -46,6 +50,8 @@ const TimerPage = ({ navigation }) => {
             </Text>
           </View>
           <TextInput
+            multiline
+            numberOfLines={4}
             style={styles.memo}
             placeholder={"운동에 대한 기록을 남기세요"}
           ></TextInput>
@@ -67,12 +73,16 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
+  date: {
+    fontWeight: "700",
+  },
   center: {
     width: "100%",
     alignItems: "center",
   },
   title: {
     textAlign: "center",
+    marginBottom: 16,
   },
   item: {
     flexDirection: "row",
@@ -81,7 +91,7 @@ const styles = StyleSheet.create({
   },
   result: {
     width: "80%",
-    height: 360,
+    marginVertical: 48,
     justifyContent: "center",
   },
   memo: {
@@ -90,6 +100,8 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderRadius: 16,
     padding: 16,
+    textAlign: "left",
+    textAlignVertical: "top",
   },
   confirm: {
     width: "80%",

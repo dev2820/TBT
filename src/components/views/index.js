@@ -6,6 +6,7 @@ import Grid from "@components/views/Grid";
 import Confirm from "@components/views/Confirm";
 import RoundCard from "@components/views/RoundCard";
 import NumberPicker from "@components/views/NumberPicker";
+import Divider from "@components/views/Divider";
 
 export {
   Card,
@@ -16,4 +17,5 @@ export {
   Confirm,
   RoundCard,
   NumberPicker,
+  Divider,
 };

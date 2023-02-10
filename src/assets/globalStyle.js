@@ -36,6 +36,11 @@ const globalStyle = StyleSheet.create({
     lineHeight: 28,
     fontWeight: "400",
   },
+  TITLE_MEDIUM: {
+    fontSize: 16,
+    lineHeight: 24,
+    fontWeight: "500",
+  },
   LABEL_LARGE: {
     fontSize: 14,
     lineHeight: 20,

@@ -1,7 +1,15 @@
 import Modal from "react-native-modal";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, View, ScrollView } from "react-native";
+import { observer } from "mobx-react-lite";
+import { useViewportStore } from "@store/viewportStore";
+
+const viewport = useViewportStore();
 
 const CenterModal = ({ isVisible, children, onBackdropPress }) => {
+  const modalHeightStyle = {
+    height: viewport.vh > 400 ? 380 : 200,
+    marginTop: viewport.vh > 400 ? -190 : -100,
+  };
   return (
     <Modal
       isVisible={isVisible}
@@ -14,7 +22,9 @@ const CenterModal = ({ isVisible, children, onBackdropPress }) => {
       animationOutTiming={200}
       onBackdropPress={onBackdropPress}
     >
-      <View style={styles.modalView}>{children}</View>
+      <ScrollView style={[styles.modal, modalHeightStyle]}>
+        {children}
+      </ScrollView>
     </Modal>
   );
 };
@@ -30,8 +40,7 @@ const styles = StyleSheet.create({
     top: "50%",
     marginTop: -190,
     borderRadius: 30,
-    overflow: "hidden",
   },
 });
 
-export default CenterModal;
+export default observer(CenterModal);

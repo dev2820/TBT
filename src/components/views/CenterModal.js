@@ -17,6 +17,7 @@ const CenterModal = ({ isVisible, children, onBackdropPress }) => {
     marginTop: viewport.vh > 400 ? -190 : -100,
     borderRadius: 30,
     backgroundColor: THEME.SURFACE,
+    overflow: "hidden",
   };
 
   return (

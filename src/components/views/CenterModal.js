@@ -6,15 +6,21 @@ import THEME from "@constants/THEME";
 
 const viewport = useViewportStore();
 
+const getHeight = (viewHeight) => {
+  if (viewHeight > 400) return 380;
+  return 200;
+};
+
 const CenterModal = ({ isVisible, children, onBackdropPress }) => {
+  const modalHeight = getHeight(viewport.vh);
   const modalStyle = {
     position: "absolute",
     left: "50%",
     top: "50%",
     width: 300,
     marginLeft: -150,
-    height: viewport.vh > 400 ? 380 : 200,
-    marginTop: viewport.vh > 400 ? -190 : -100,
+    height: modalHeight,
+    marginTop: -Math.floor(modalHeight / 2),
     borderRadius: 30,
     backgroundColor: THEME.SURFACE,
     overflow: "hidden",

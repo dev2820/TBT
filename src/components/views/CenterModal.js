@@ -2,6 +2,7 @@ import Modal from "react-native-modal";
 import { StyleSheet, View, ScrollView } from "react-native";
 import { observer } from "mobx-react-lite";
 import { useViewportStore } from "@store/viewportStore";
+import THEME from "@constants/THEME";
 
 const viewport = useViewportStore();
 
@@ -15,6 +16,7 @@ const CenterModal = ({ isVisible, children, onBackdropPress }) => {
     height: viewport.vh > 400 ? 380 : 200,
     marginTop: viewport.vh > 400 ? -190 : -100,
     borderRadius: 30,
+    backgroundColor: THEME.SURFACE,
   };
   return (
     <Modal
@@ -28,15 +30,9 @@ const CenterModal = ({ isVisible, children, onBackdropPress }) => {
       animationOutTiming={200}
       onBackdropPress={onBackdropPress}
     >
-      <ScrollView style={[styles.modal, modalStyle]}>{children}</ScrollView>
+      <ScrollView style={modalStyle}>{children}</ScrollView>
     </Modal>
   );
 };
-
-const styles = StyleSheet.create({
-  modalView: {
-    backgroundColor: "white",
-  },
-});
 
 export default observer(CenterModal);

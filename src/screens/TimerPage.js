@@ -95,7 +95,7 @@ const styles = StyleSheet.create({
   time: {
     textAlignVertical: "center",
     fontWeight: "700",
-    letterSpacing: 8,
+    letterSpacing: 4,
   },
 });
 

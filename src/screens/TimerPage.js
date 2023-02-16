@@ -50,7 +50,9 @@ const TimerPage = ({ navigation }) => {
       e.preventDefault();
     });
   }, [navigation]);
-
+  const timerSizeStyle = {
+    fontSize: viewport.vh > 300 ? 96 : 64,
+  };
   const theme = { backgroundColor: phase.currentPhase?.theme ?? THEME.WORK };
   return (
     <Page style={[theme, styles.container]}>
@@ -61,7 +63,7 @@ const TimerPage = ({ navigation }) => {
         <Text style={globalStyle.HEADING_LARGE}>
           {phase.currentRep}/{phase.allRep} {phase.currentPhase?.name}
         </Text>
-        <Text style={[globalStyle.DISPLAY_EXTRA_LARGE, styles.time]}>
+        <Text style={[timerSizeStyle, styles.time]}>
           {formatTime(timer.time)}
         </Text>
         {viewport.vh > 400 ? (
@@ -106,6 +108,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     flex: 1,
     justifyContent: "space-between",
+    paddingBottom: 12,
   },
   time: {
     textAlignVertical: "center",

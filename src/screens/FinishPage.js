@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Text, View, StyleSheet } from "react-native";
+import { Text, ScrollView, View, StyleSheet } from "react-native";
 import { Page, Divider, FilledButton } from "@components/views";
 import { usePhaseStore } from "@store/phaseStore";
 import formatTime from "@utils/formatTime";
@@ -23,7 +23,10 @@ const FinishPage = ({ navigation }) => {
 
   return (
     <Page style={styles.container}>
-      <View style={styles.center}>
+      <ScrollView
+        style={styles.scroll}
+        contentContainerStyle={styles.scrollContainer}
+      >
         <Text style={[globalStyle.HEADING_LARGE, styles.title]}>
           🎉 완료 🎉
         </Text>
@@ -64,7 +67,7 @@ const FinishPage = ({ navigation }) => {
           textTheme={THEME.ON_PRIMARY}
           style={styles.confirm}
         ></FilledButton>
-      </View>
+      </ScrollView>
     </Page>
   );
 };
@@ -77,9 +80,14 @@ const styles = StyleSheet.create({
   date: {
     fontWeight: "700",
   },
-  center: {
+  scroll: {
     width: "100%",
+  },
+  scrollContainer: {
     alignItems: "center",
+    paddingTop: 72,
+    paddingBottom: 32,
+    justifyContent: "center",
   },
   title: {
     textAlign: "center",

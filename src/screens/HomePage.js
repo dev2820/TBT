@@ -22,10 +22,10 @@ const HomePage = ({ navigation }) => {
   };
 
   const startTextStyle =
-    viewport.vh > 600 ? globalStyle.HEADING_LARGE : globalStyle.HEADING_SMALL;
+    viewport.vh > 400 ? globalStyle.HEADING_LARGE : globalStyle.HEADING_SMALL;
   const startButtonStyle = {
     ...styles.startButton,
-    height: viewport.vh > 600 ? styles.startButton.height : 60,
+    height: viewport.vh > 400 ? styles.startButton.height : 60,
   };
 
   return (

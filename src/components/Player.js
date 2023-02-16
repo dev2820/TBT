@@ -73,7 +73,6 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     height: 120,
-    marginTop: 8,
   },
   smallController: {
     width: 80,

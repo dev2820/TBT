@@ -6,9 +6,15 @@ import { useViewportStore } from "@store/viewportStore";
 const viewport = useViewportStore();
 
 const CenterModal = ({ isVisible, children, onBackdropPress }) => {
-  const modalHeightStyle = {
+  const modalStyle = {
+    position: "absolute",
+    left: "50%",
+    top: "50%",
+    width: 300,
+    marginLeft: -150,
     height: viewport.vh > 400 ? 380 : 200,
     marginTop: viewport.vh > 400 ? -190 : -100,
+    borderRadius: 30,
   };
   return (
     <Modal
@@ -22,24 +28,14 @@ const CenterModal = ({ isVisible, children, onBackdropPress }) => {
       animationOutTiming={200}
       onBackdropPress={onBackdropPress}
     >
-      <ScrollView style={[styles.modal, modalHeightStyle]}>
-        {children}
-      </ScrollView>
+      <ScrollView style={[styles.modal, modalStyle]}>{children}</ScrollView>
     </Modal>
   );
 };
 
 const styles = StyleSheet.create({
   modalView: {
-    position: "absolute",
-    width: 300,
-    height: 380,
     backgroundColor: "white",
-    left: "50%",
-    marginLeft: -150,
-    top: "50%",
-    marginTop: -190,
-    borderRadius: 30,
   },
 });
 

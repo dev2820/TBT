@@ -1,5 +1,5 @@
 import Modal from "react-native-modal";
-import { StyleSheet, View, ScrollView } from "react-native";
+import { ScrollView } from "react-native";
 import { observer } from "mobx-react-lite";
 import { useViewportStore } from "@store/viewportStore";
 import THEME from "@constants/THEME";
@@ -18,6 +18,7 @@ const CenterModal = ({ isVisible, children, onBackdropPress }) => {
     borderRadius: 30,
     backgroundColor: THEME.SURFACE,
   };
+
   return (
     <Modal
       isVisible={isVisible}

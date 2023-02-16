@@ -1,11 +1,10 @@
-import { StyleSheet, Text, Dimensions } from "react-native";
+import { StyleSheet, Text } from "react-native";
 import { Label } from "@components/views";
 import { observer } from "mobx-react-lite";
 import globalStyle from "@assets/globalStyle";
 import ThemeButton from "@components/ThemeButton";
 import formatTime from "@utils/formatTime";
 import SETTING from "@constants/SETTING";
-import { useState } from "react";
 import { useViewportStore } from "@store/viewportStore";
 
 const viewport = useViewportStore();

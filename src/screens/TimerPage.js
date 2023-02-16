@@ -5,13 +5,17 @@ import { observer } from "mobx-react-lite";
 import { observe } from "mobx";
 import { useTimerStore } from "@store/timerStore";
 import { usePhaseStore } from "@store/phaseStore";
+import { useViewportStore } from "@store/viewportStore";
 import globalStyle from "@assets/globalStyle";
 import formatTime from "@utils/formatTime";
 import Player from "@components/Player";
+import SmallPlayer from "@components/SmallPlayer";
 import THEME from "@constants/THEME";
 
 const phase = usePhaseStore();
 const timer = useTimerStore();
+const viewport = useViewportStore();
+
 let diposer = null;
 const clearTimer = () => {
   if (diposer) {
@@ -60,13 +64,23 @@ const TimerPage = ({ navigation }) => {
         <Text style={[globalStyle.DISPLAY_EXTRA_LARGE, styles.time]}>
           {formatTime(timer.time)}
         </Text>
-        <Player
-          prev={() => phase.prev()}
-          next={() => phase.next()}
-          pause={() => phase.pause()}
-          play={() => phase.resume()}
-          isRun={phase.isRun}
-        ></Player>
+        {viewport.vh > 400 ? (
+          <Player
+            prev={() => phase.prev()}
+            next={() => phase.next()}
+            pause={() => phase.pause()}
+            play={() => phase.resume()}
+            isRun={phase.isRun}
+          ></Player>
+        ) : (
+          <SmallPlayer
+            prev={() => phase.prev()}
+            next={() => phase.next()}
+            pause={() => phase.pause()}
+            play={() => phase.resume()}
+            isRun={phase.isRun}
+          ></SmallPlayer>
+        )}
       </View>
     </Page>
   );

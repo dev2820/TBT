@@ -11,5 +11,6 @@ export default {
   PLACEHOLDER: "#EEEEEE",
   PLACEHOLDER_DARKER: "#CCCCCC",
   ON_PRIMARY: "rgba(255,255,255,1)",
+  SURFACE: "rgba(255,255,255,1)",
   ON_SURFACE: "rgba(0,0,0,1)",
 };

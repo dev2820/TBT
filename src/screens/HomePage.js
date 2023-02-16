@@ -1,4 +1,4 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet, Text } from "react-native";
 import { observer } from "mobx-react-lite";
 import { Page } from "@components/views";
 import ThemeButton from "@components/ThemeButton";
@@ -34,12 +34,12 @@ const HomePage = ({ navigation }) => {
       {viewport.vh > 600 && <Title>🔥 TBT 🔥</Title>}
       <Settings></Settings>
       <ThemeButton
-        title="START"
         onPress={gotoTimer}
         theme={THEME.PRIMARY}
         style={startButtonStyle}
-        textStyle={startTextStyle}
-      ></ThemeButton>
+      >
+        <Text style={[globalStyle.ON_PRIMARY, startTextStyle]}>START</Text>
+      </ThemeButton>
       <ReadySetupModal></ReadySetupModal>
       <BreakSetupModal></BreakSetupModal>
       <WorkSetupModal></WorkSetupModal>

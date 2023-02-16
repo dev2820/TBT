@@ -1,14 +1,13 @@
-import { Text, StyleSheet } from "react-native";
+import { StyleSheet } from "react-native";
 import Card from "@components/views/Card";
-import globalStyle from "@assets/globalStyle";
 
-const ThemeButton = ({ title, onPress, theme, style, textStyle }) => {
+const ThemeButton = ({ children, onPress, theme, style }) => {
   const themeStyle = {
     backgroundColor: theme,
   };
   return (
     <Card style={[styles.button, themeStyle, style]} onPress={onPress}>
-      <Text style={[globalStyle.ON_PRIMARY, textStyle]}>{title}</Text>
+      {children}
     </Card>
   );
 };

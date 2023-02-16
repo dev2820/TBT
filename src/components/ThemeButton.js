@@ -1,11 +1,13 @@
 import { Text, StyleSheet } from "react-native";
 import Card from "@components/views/Card";
 import globalStyle from "@assets/globalStyle";
-import THEME from "@constants/THEME";
 
-const PrimaryButton = ({ title, onPress, style, textStyle }) => {
+const ThemeButton = ({ title, onPress, theme, style, textStyle }) => {
+  const themeStyle = {
+    backgroundColor: theme,
+  };
   return (
-    <Card style={[styles.button, style]} onPress={onPress}>
+    <Card style={[styles.button, themeStyle, style]} onPress={onPress}>
       <Text style={[globalStyle.ON_PRIMARY, textStyle]}>{title}</Text>
     </Card>
   );
@@ -19,9 +21,8 @@ const styles = StyleSheet.create({
   button: {
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: THEME.PRIMARY,
     marginBottom: 16,
   },
 });
 
-export default PrimaryButton;
+export default ThemeButton;

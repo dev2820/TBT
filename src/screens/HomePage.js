@@ -1,7 +1,7 @@
 import { StyleSheet } from "react-native";
 import { observer } from "mobx-react-lite";
 import { Page } from "@components/views";
-import PrimaryButton from "@components/PrimaryButton";
+import ThemeButton from "@components/ThemeButton";
 import Title from "@components/Title";
 import Settings from "@components/Settings";
 import ReadySetupModal from "@screens/ReadySetupModal";
@@ -11,6 +11,7 @@ import RepsSetupModal from "@screens/RepsSetupModal";
 import { usePhaseStore } from "@store/phaseStore";
 import { useViewportStore } from "@store/viewportStore";
 import globalStyle from "@assets/globalStyle";
+import THEME from "@constants/THEME";
 
 const phase = usePhaseStore();
 const viewport = useViewportStore();
@@ -32,12 +33,13 @@ const HomePage = ({ navigation }) => {
     <Page style={styles.container}>
       {viewport.vh > 600 && <Title>🔥 TBT 🔥</Title>}
       <Settings></Settings>
-      <PrimaryButton
+      <ThemeButton
         title="START"
         onPress={gotoTimer}
+        theme={THEME.PRIMARY}
         style={startButtonStyle}
         textStyle={startTextStyle}
-      ></PrimaryButton>
+      ></ThemeButton>
       <ReadySetupModal></ReadySetupModal>
       <BreakSetupModal></BreakSetupModal>
       <WorkSetupModal></WorkSetupModal>

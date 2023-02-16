@@ -1,7 +1,7 @@
-import { useState } from "react";
-import { StyleSheet, Text, Dimensions } from "react-native";
+import { StyleSheet } from "react-native";
 import { observer } from "mobx-react-lite";
-import { Page, Card } from "@components/views";
+import { Page } from "@components/views";
+import PrimaryButton from "@components/PrimaryButton";
 import Title from "@components/Title";
 import Settings from "@components/Settings";
 import ReadySetupModal from "@screens/ReadySetupModal";
@@ -25,11 +25,7 @@ const HomePage = ({ navigation }) => {
     <Page style={styles.container}>
       {viewportStore.vh > 600 && <Title>🔥 TBT 🔥</Title>}
       <Settings></Settings>
-      <Card style={styles.startButton} onPress={gotoTimer}>
-        <Text style={[globalStyle.HEADING_LARGE, globalStyle.ON_PRIMARY]}>
-          START
-        </Text>
-      </Card>
+      <PrimaryButton title="START" onPress={gotoTimer}></PrimaryButton>
       <ReadySetupModal></ReadySetupModal>
       <BreakSetupModal></BreakSetupModal>
       <WorkSetupModal></WorkSetupModal>
@@ -42,14 +38,6 @@ const styles = StyleSheet.create({
   container: {
     alignItems: "center",
     justifyContent: "center",
-  },
-  startButton: {
-    width: 340,
-    height: 80,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: THEME.PRIMARY,
-    marginBottom: 16,
   },
 });
 

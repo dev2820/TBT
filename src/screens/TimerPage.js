@@ -90,6 +90,7 @@ const styles = StyleSheet.create({
   },
   timer: {
     alignItems: "center",
+    flex: 1,
     justifyContent: "space-between",
   },
   time: {

@@ -1,5 +1,5 @@
 import Modal from "react-native-modal";
-import { ScrollView } from "react-native";
+import { View } from "react-native";
 import { observer } from "mobx-react-lite";
 import { useViewportStore } from "@store/viewportStore";
 import THEME from "@constants/THEME";
@@ -31,7 +31,7 @@ const CenterModal = ({ isVisible, children, onBackdropPress }) => {
       animationOutTiming={200}
       onBackdropPress={onBackdropPress}
     >
-      <ScrollView style={modalStyle}>{children}</ScrollView>
+      <View style={modalStyle}>{children}</View>
     </Modal>
   );
 };

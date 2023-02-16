@@ -1,13 +1,19 @@
 import THEME from "@constants/THEME";
 import globalStyle from "@assets/globalStyle";
-import { View, TouchableHighlight, Text, StyleSheet } from "react-native";
+import {
+  ScrollView,
+  View,
+  TouchableHighlight,
+  Text,
+  StyleSheet,
+} from "react-native";
 
 const Confirm = ({ style, children, onConfirm, onCancel }) => {
   const CONFIRM = "확인";
   const CAHCEL = "취소";
   return (
     <View style={[styles.container, style]}>
-      <View style={styles.content}>{children}</View>
+      <ScrollView style={styles.content}>{children}</ScrollView>
       <View style={styles.buttons}>
         <TouchableHighlight
           style={styles.button}

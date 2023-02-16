@@ -8,6 +8,7 @@ const viewport = useViewportStore();
 
 const getHeight = (viewHeight) => {
   if (viewHeight > 400) return 380;
+  if (viewHeight > 300) return 280;
   return 200;
 };
 

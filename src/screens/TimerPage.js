@@ -54,11 +54,9 @@ const TimerPage = ({ navigation }) => {
         <Button style={styles.home} title="Home" onPress={goBack}></Button>
       </View>
       <View style={styles.timer}>
-        <View style={styles.reps}>
-          <Text style={globalStyle.HEADING_LARGE}>
-            {phase.currentRep}/{phase.allRep} {phase.currentPhase?.name}
-          </Text>
-        </View>
+        <Text style={globalStyle.HEADING_LARGE}>
+          {phase.currentRep}/{phase.allRep} {phase.currentPhase?.name}
+        </Text>
         <Text style={[globalStyle.DISPLAY_EXTRA_LARGE, styles.time]}>
           {formatTime(timer.time)}
         </Text>
@@ -92,17 +90,12 @@ const styles = StyleSheet.create({
   },
   timer: {
     alignItems: "center",
-    justifyContent: "center",
+    justifyContent: "space-between",
   },
   time: {
-    height: 300,
     textAlignVertical: "center",
     fontWeight: "700",
     letterSpacing: 8,
-  },
-  reps: {
-    flexDirection: "row",
-    alignItems: "baseline",
   },
 });
 

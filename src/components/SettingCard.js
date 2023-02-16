@@ -29,7 +29,7 @@ const SettingCard = ({ setting, onPress }) => {
       style={[styles.container, cardSizeStyle]}
     >
       {cardSize > 120 && <Label style={styles.label}>{setting.name}</Label>}
-      <Text style={[styles.value, globalStyle.DISPLAY_SMALL]}>
+      <Text style={[styles.settingValue, globalStyle.DISPLAY_SMALL]}>
         {format(setting)}
       </Text>
     </ThemeButton>
@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
     margin: 10,
     alignItems: "center",
   },
-  value: {
+  settingValue: {
     flexGrow: 1,
     textAlignVertical: "center",
     textAlign: "center",

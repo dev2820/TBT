@@ -22,25 +22,6 @@ const clearTimer = () => {
 };
 
 const TimerPage = ({ navigation }) => {
-  const window = Dimensions.get("window");
-  const [isRepsPositionBotton, setRepsPositionBottom] = useState(
-    window.height >= 500
-  );
-  const [timerTop, setTimerTop] = useState(
-    Math.floor(Math.min(window.height / 20, 88))
-  );
-  const [timerHeight, setTimerHeight] = useState(
-    Math.floor(Math.min(window.height / 2.8, 300))
-  );
-  Dimensions.addEventListener("change", (e) => {
-    if (e.window.height < 500) {
-      setRepsPositionBottom(false);
-    } else {
-      setRepsPositionBottom(true);
-    }
-    setTimerTop(Math.floor(Math.min(e.window.height / 20, 88)));
-    setTimerHeight(Math.floor(Math.min(e.window.height / 2.8, 300)));
-  });
   const goBack = () => {
     clearTimer();
     navigation.navigate("Home");
@@ -72,26 +53,15 @@ const TimerPage = ({ navigation }) => {
       <View style={styles.topbar}>
         <Button style={styles.home} title="Home" onPress={goBack}></Button>
       </View>
-      <View style={[styles.timer, { top: timerTop }]}>
-        <Text style={globalStyle.TITLE_LARGE}>
-          {phase.currentPhase?.name}
-          {!isRepsPositionBotton && ` ${phase.currentRep}/${phase.allRep} Reps`}
-        </Text>
-        <Text
-          style={[
-            globalStyle.DISPLAY_EXTRA_LARGE,
-            styles.time,
-            { height: timerHeight },
-          ]}
-        >
+      <View style={[styles.timer]}>
+        <Text style={globalStyle.TITLE_LARGE}>{phase.currentPhase?.name}</Text>
+        <Text style={[globalStyle.DISPLAY_EXTRA_LARGE, styles.time]}>
           {formatTime(timer.time)}
         </Text>
-        {isRepsPositionBotton && (
-          <View style={styles.reps}>
-            <Text style={[globalStyle.DISPLAY_MEDIUM]}>{phase.currentRep}</Text>
-            <Text style={globalStyle.HEADING_SMALL}>/{phase.allRep} Reps</Text>
-          </View>
-        )}
+        <View style={styles.reps}>
+          <Text style={[globalStyle.DISPLAY_MEDIUM]}>{phase.currentRep}</Text>
+          <Text style={globalStyle.HEADING_SMALL}>/{phase.allRep} Reps</Text>
+        </View>
         <Player
           prev={() => phase.prev()}
           next={() => phase.next()}

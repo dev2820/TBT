@@ -3,12 +3,10 @@ import Card from "@components/views/Card";
 import globalStyle from "@assets/globalStyle";
 import THEME from "@constants/THEME";
 
-const PrimaryButton = ({ title, onPress }) => {
+const PrimaryButton = ({ title, onPress, style, textStyle }) => {
   return (
-    <Card style={styles.button} onPress={onPress}>
-      <Text style={[globalStyle.HEADING_LARGE, globalStyle.ON_PRIMARY]}>
-        {title}
-      </Text>
+    <Card style={[styles.button, style]} onPress={onPress}>
+      <Text style={[globalStyle.ON_PRIMARY, textStyle]}>{title}</Text>
     </Card>
   );
 };
@@ -19,8 +17,6 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   button: {
-    width: 340,
-    height: 80,
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: THEME.PRIMARY,

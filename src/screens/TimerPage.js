@@ -53,15 +53,15 @@ const TimerPage = ({ navigation }) => {
       <View style={styles.topbar}>
         <Button style={styles.home} title="Home" onPress={goBack}></Button>
       </View>
-      <View style={[styles.timer]}>
-        <Text style={globalStyle.TITLE_LARGE}>{phase.currentPhase?.name}</Text>
+      <View style={styles.timer}>
+        <View style={styles.reps}>
+          <Text style={globalStyle.HEADING_LARGE}>
+            {phase.currentRep}/{phase.allRep} {phase.currentPhase?.name}
+          </Text>
+        </View>
         <Text style={[globalStyle.DISPLAY_EXTRA_LARGE, styles.time]}>
           {formatTime(timer.time)}
         </Text>
-        <View style={styles.reps}>
-          <Text style={[globalStyle.DISPLAY_MEDIUM]}>{phase.currentRep}</Text>
-          <Text style={globalStyle.HEADING_SMALL}>/{phase.allRep} Reps</Text>
-        </View>
         <Player
           prev={() => phase.prev()}
           next={() => phase.next()}
@@ -101,7 +101,6 @@ const styles = StyleSheet.create({
     letterSpacing: 8,
   },
   reps: {
-    height: 44,
     flexDirection: "row",
     alignItems: "baseline",
   },

@@ -1,22 +1,28 @@
 import { StyleSheet, Text, Dimensions } from "react-native";
 import { Label } from "@components/views";
+import { observer } from "mobx-react-lite";
 import globalStyle from "@assets/globalStyle";
 import ThemeButton from "@components/ThemeButton";
 import formatTime from "@utils/formatTime";
 import SETTING from "@constants/SETTING";
 import { useState } from "react";
+import { useViewportStore } from "@store/viewportStore";
+
+const viewport = useViewportStore();
 
 const format = ({ value, type }) => {
   if (type === SETTING.TYPE.TIME) return formatTime(value);
 
   return value;
 };
+const getCardSize = (viewHeight) => {
+  if (viewHeight > 500) return 160;
+  if (viewHeight > 300) return 80;
+  return 50;
+};
 
 const SettingCard = ({ setting, onPress }) => {
-  const [cardSize, setCardSize] = useState(160);
-  Dimensions.addEventListener("change", (e) => {
-    setCardSize(Math.floor(Math.min((e.window.height / 2) * 0.5, 160)));
-  });
+  const cardSize = getCardSize(viewport.vh);
   const cardSizeStyle = {
     width: cardSize,
     height: cardSize,
@@ -54,4 +60,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default SettingCard;
+export default observer(SettingCard);

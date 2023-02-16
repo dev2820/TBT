@@ -1,5 +1,5 @@
 import { StyleSheet, Text, Dimensions } from "react-native";
-import { Card, Label } from "@components/views";
+import { Label } from "@components/views";
 import globalStyle from "@assets/globalStyle";
 import ThemeButton from "@components/ThemeButton";
 import formatTime from "@utils/formatTime";
@@ -17,7 +17,6 @@ const SettingCard = ({ setting, onPress }) => {
   Dimensions.addEventListener("change", (e) => {
     setCardSize(Math.floor(Math.min((e.window.height / 2) * 0.5, 160)));
   });
-  const theme = { backgroundColor: setting.theme };
   const cardSizeStyle = {
     width: cardSize,
     height: cardSize,

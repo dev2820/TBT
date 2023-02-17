@@ -56,6 +56,9 @@ const NumberPicker = ({
     }
     onChange(num);
   }, [num]);
+  useEffect(() => {
+    setNum(initNum);
+  }, [initNum]);
 
   return (
     <View style={style}>

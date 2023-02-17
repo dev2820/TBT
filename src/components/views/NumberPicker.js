@@ -3,17 +3,14 @@ import { TouchableHighlight, View, Text, StyleSheet } from "react-native";
 import THEME from "@constants/THEME";
 import globalStyle from "@assets/globalStyle";
 import easeInRunner from "@utils/easeInRunner";
-let stopContinue = null;
+import createCalcRotate from "@utils/createCalcRotate";
 
+let stopContinue = null;
 const NumberPicker = ({ initNum, max = 0, min = 0, step, onChange, style }) => {
+  const calcRotate = createCalcRotate(min, max);
   const [num, setNum] = useState(initNum);
   const increase = () => {
-    setNum((prevNum) => {
-      if (prevNum + step > max) {
-        return prevNum + step - max + min - 1;
-      }
-      return prevNum + step;
-    });
+    setNum((prevNum) => calcRotate(prevNum, step));
   };
   const continuousIncrease = () => {
     stopContinue = easeInRunner(increase, 200);
@@ -24,12 +21,7 @@ const NumberPicker = ({ initNum, max = 0, min = 0, step, onChange, style }) => {
     stopContinue = null;
   };
   const decrease = () => {
-    setNum((prevNum) => {
-      if (prevNum - step < min) {
-        return prevNum - step - min + max + 1;
-      }
-      return prevNum - step;
-    });
+    setNum((prevNum) => calcRotate(prevNum, -step));
   };
   const continuousDecrease = () => {
     stopContinue = easeInRunner(decrease, 200);

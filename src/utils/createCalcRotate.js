@@ -13,3 +13,5 @@ const createCalcRotate = (min, max) => {
     return num;
   };
 };
+
+export default createCalcRotate;

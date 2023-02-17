@@ -38,12 +38,20 @@ const SetupModal = () => {
         onCancel={cancel}
       >
         <Text style={[globalStyle.HEADING_SMALL, styles.title]}>{title}</Text>
-        {pickerType === SETTING.TYPE.TIME
-          ? TimePickerView(setupValue, changeSetupValue)
-          : NumberPickerView(setupValue, changeSetupValue)}
+        <Picker
+          type={pickerType}
+          value={setupValue}
+          onChange={changeSetupValue}
+        ></Picker>
       </Confirm>
     </CenterModal>
   );
+};
+
+const Picker = ({ type, value, onChange }) => {
+  if (type === SETTING.TYPE.TIME) return TimePickerView(value, onChange);
+  if (type === SETTING.TYPE.NUMBER) return NumberPickerView(value, onChange);
+  return "";
 };
 
 const TimePickerView = (value, onChange) => {
@@ -55,6 +63,7 @@ const TimePickerView = (value, onChange) => {
     ></TimePicker>
   );
 };
+
 const NumberPickerView = (value, onChange) => {
   return (
     <NumberPicker

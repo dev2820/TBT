@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { View, Text, StyleSheet } from "react-native";
 import { NumberPicker } from "@components/views";
 
@@ -12,6 +12,10 @@ const TimePicker = ({ style, timeSelected, onChange }) => {
     changeCurrentSec(sec);
     onChange(min * 60 + sec);
   };
+  useEffect(() => {
+    changeCurrentMin(Math.floor(timeSelected / 60));
+    changeCurrentSec(timeSelected % 60);
+  }, [timeSelected]);
 
   return (
     <View style={[styles.pickers, style]}>

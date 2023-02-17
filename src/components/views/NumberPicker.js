@@ -3,28 +3,13 @@ import { TouchableHighlight, View, Text, StyleSheet } from "react-native";
 import THEME from "@constants/THEME";
 import globalStyle from "@assets/globalStyle";
 import easeInRunner from "@utils/easeInRunner";
-
 let stopContinue = null;
 
-const NumberPicker = ({
-  initNum,
-  max = 0,
-  min = 0,
-  step,
-  onChange,
-  isRotatable,
-  style,
-}) => {
+const NumberPicker = ({ initNum, max = 0, min = 0, step, onChange, style }) => {
   const [num, setNum] = useState(initNum);
-  const [isIncreaseDisable, setIncreaseDisable] = useState(
-    !isRotatable && num + step > max
-  );
-  const [isDecreaseDisable, setDecreaseDisable] = useState(
-    !isRotatable && num - step < min
-  );
   const increase = () => {
     setNum((prevNum) => {
-      if (isRotatable && prevNum + step > max) {
+      if (prevNum + step > max) {
         return prevNum + step - max + min - 1;
       }
       return prevNum + step;
@@ -40,7 +25,7 @@ const NumberPicker = ({
   };
   const decrease = () => {
     setNum((prevNum) => {
-      if (isRotatable && prevNum - step < min) {
+      if (prevNum - step < min) {
         return prevNum - step - min + max + 1;
       }
       return prevNum - step;
@@ -50,10 +35,6 @@ const NumberPicker = ({
     stopContinue = easeInRunner(decrease, 200);
   };
   useEffect(() => {
-    if (!isRotatable) {
-      setIncreaseDisable(num + step > max);
-      setDecreaseDisable(num - step < min);
-    }
     onChange(num);
   }, [num]);
   useEffect(() => {
@@ -68,14 +49,9 @@ const NumberPicker = ({
         delayLongPress={300}
         onLongPress={continuousIncrease}
         onPressOut={stopContinueRunner}
-        disabled={isIncreaseDisable}
         underlayColor={THEME.PLACEHOLDER_DARKER}
       >
-        <Text
-          style={[globalStyle.LABEL_LARGE, isIncreaseDisable && styles.disable]}
-        >
-          +
-        </Text>
+        <Text style={globalStyle.LABEL_LARGE}>+</Text>
       </TouchableHighlight>
       <Text style={[styles.number, globalStyle.HEADING_LARGE]}>{num}</Text>
       <TouchableHighlight
@@ -84,14 +60,9 @@ const NumberPicker = ({
         delayLongPress={400}
         onLongPress={continuousDecrease}
         onPressOut={stopContinueRunner}
-        disabled={isDecreaseDisable}
         underlayColor={THEME.PLACEHOLDER_DARKER}
       >
-        <Text
-          style={[globalStyle.LABEL_LARGE, isDecreaseDisable && styles.disable]}
-        >
-          -
-        </Text>
+        <Text style={globalStyle.LABEL_LARGE}>-</Text>
       </TouchableHighlight>
     </View>
   );
@@ -109,9 +80,6 @@ const styles = StyleSheet.create({
   number: {
     textAlign: "center",
     marginVertical: 24,
-  },
-  disable: {
-    opacity: 0.5,
   },
 });
 export default NumberPicker;

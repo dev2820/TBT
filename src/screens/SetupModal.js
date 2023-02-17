@@ -73,7 +73,6 @@ const NumberPickerView = (value, onChange) => {
       max={99}
       min={0}
       step={1}
-      isRotatable={true}
       onChange={(num) => onChange(num)}
     ></NumberPicker>
   );

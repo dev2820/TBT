@@ -19,17 +19,25 @@ const cancel = () => {
 
 const SetupModal = () => {
   if (setup.currentSetup.type === SETTING.TYPE.TIME) {
-    return (
-      <TimePickerModal
-        title={`${setup.currentSetup.name}`}
-        isVisible={modal.isModalVisible}
-        confirm={confirm}
-        cancel={cancel}
-        value={setup.currentSetup.value}
-      ></TimePickerModal>
-    );
+    return TimePicker();
   }
 
+  return NumberPicker();
+};
+
+const TimePicker = () => {
+  return (
+    <TimePickerModal
+      title={`${setup.currentSetup.name}`}
+      isVisible={modal.isModalVisible}
+      confirm={confirm}
+      cancel={cancel}
+      value={setup.currentSetup.value}
+    ></TimePickerModal>
+  );
+};
+
+const NumberPicker = () => {
   return (
     <NumberPickerModal
       title={"반복 횟수"}

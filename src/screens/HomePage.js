@@ -5,7 +5,6 @@ import ThemeButton from "@components/ThemeButton";
 import Title from "@components/Title";
 import Settings from "@components/Settings";
 import SetupModal from "@screens/SetupModal";
-import RepsSetupModal from "@screens/RepsSetupModal";
 import { usePhaseStore } from "@store/phaseStore";
 import { useViewportStore } from "@store/viewportStore";
 import globalStyle from "@assets/globalStyle";
@@ -39,7 +38,6 @@ const HomePage = ({ navigation }) => {
         <Text style={[globalStyle.ON_PRIMARY, startTextStyle]}>START</Text>
       </ThemeButton>
       <SetupModal></SetupModal>
-      <RepsSetupModal></RepsSetupModal>
     </Page>
   );
 };

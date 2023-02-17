@@ -3,13 +3,12 @@ import TimePickerModal from "@components/TimePickerModal";
 import { observer } from "mobx-react-lite";
 import { useModalStore } from "@store/modalStore";
 import { useSetupStore } from "@store/setupStore";
-import PHASE from "@constants/PHASE";
 
 const modal = useModalStore();
 const setup = useSetupStore();
 
 const confirm = (time) => {
-  setup.changeBreakTime(time);
+  setup.changeCurrentSetupValue(time);
   modal.hideModal();
 };
 const cancel = () => {
@@ -19,11 +18,11 @@ const cancel = () => {
 const BreakSetupModal = () => {
   return (
     <TimePickerModal
-      title={"휴식 시간"}
+      title={`${setup.currentSetup.name}`}
       isVisible={modal.isModalVisible}
       confirm={confirm}
       cancel={cancel}
-      value={setup[PHASE.BREAK.NAME].value}
+      value={setup.currentSetup.value}
     ></TimePickerModal>
   );
 };

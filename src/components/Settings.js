@@ -12,24 +12,8 @@ const setup = useSetupStore();
 
 const Settings = () => {
   const showModal = (key) => {
+    setup.setCurrentSetup(key);
     modal.showModal();
-    return;
-    if (key === PHASE.READY.NAME) {
-      modal.showReadySetupModal();
-      return;
-    }
-    if (key === PHASE.BREAK.NAME) {
-      modal.showBreakSetupModal();
-      return;
-    }
-    if (key === PHASE.WORK.NAME) {
-      modal.showWorkSetupModal();
-      return;
-    }
-    if (key === REPS.NAME) {
-      modal.showRepsSetupModal();
-      return;
-    }
   };
   return (
     <View style={styles.container}>

@@ -56,6 +56,19 @@ const setupStore = observable(
         this[REPS.NAME],
       ];
     },
+    currentSetupKey: PHASE.READY.NAME,
+    setCurrentSetup(key) {
+      this.currentSetupKey = key;
+    },
+    get currentSetup() {
+      return this[this.currentSetupKey];
+    },
+    changeCurrentSetupValue(value) {
+      this[this.currentSetupKey] = {
+        ...this[this.currentSetupKey],
+        value: value,
+      };
+    },
     changeReadyTime(time) {
       this[PHASE.READY.NAME] = {
         ...this[PHASE.READY.NAME],

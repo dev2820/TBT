@@ -15,6 +15,7 @@ const SetupModal = () => {
   const originalValue = setup.currentSetup.value;
   const title = setup.currentSetup.name;
   const pickerType = setup.currentSetup.type;
+  const isVisible = modal.isModalVisible;
   const [setupValue, changeSetupValue] = useState(originalValue);
   useEffect(() => {
     if (!modal.isModalVisible) return;
@@ -30,7 +31,7 @@ const SetupModal = () => {
   };
 
   return (
-    <CenterModal isVisible={modal.isModalVisible} onBackdropPress={cancel}>
+    <CenterModal isVisible={isVisible} onBackdropPress={cancel}>
       <Confirm
         onConfirm={() => {
           confirm(setupValue);

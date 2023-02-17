@@ -1,4 +1,4 @@
-const createRotator = (min, max) => {
+const createCalcRotate = (min, max) => {
   return (num, plus) => {
     plus = plus % (max - min + 1);
     num += plus;
@@ -18,18 +18,19 @@ class RotationNumber {
   num = 0;
   min = 0;
   max = 0;
+  calcRotate = () => {};
+
   constructor(initNum, min, max) {
     this.num = initNum;
     this.min = min;
     this.max = max;
+    this.calcRotate = createCalcRotate(this.min, this.max);
   }
   increase(value) {
-    const rotator = createRotator(this.min, this.max);
-    this.num = rotator(this.num, value);
+    this.num = this.calcRotate(this.num, value);
   }
   decrease(value) {
-    const rotator = createRotator(this.min, this.max);
-    this.num = rotator(this.num, -value);
+    this.num = this.calcRotate(this.num, -value);
   }
 }
 

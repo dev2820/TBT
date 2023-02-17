@@ -1,20 +1,21 @@
 import { useState, useEffect } from "react";
 import { View, Text, StyleSheet } from "react-native";
 import { NumberPicker } from "@components/views";
+import calcMinSec from "@utils/calcMinSec";
 
 const TimePicker = ({ style, timeSelected, onChange }) => {
-  const [currentMin, changeCurrentMin] = useState(
-    Math.floor(timeSelected / 60)
-  );
-  const [currentSec, changeCurrentSec] = useState(timeSelected % 60);
+  const [min, sec] = calcMinSec(timeSelected);
+  const [currentMin, changeCurrentMin] = useState(Math.floor(min));
+  const [currentSec, changeCurrentSec] = useState(sec);
   const timeChange = (min, sec) => {
     changeCurrentMin(min);
     changeCurrentSec(sec);
     onChange(min * 60 + sec);
   };
   useEffect(() => {
-    changeCurrentMin(Math.floor(timeSelected / 60));
-    changeCurrentSec(timeSelected % 60);
+    const [min, sec] = calcMinSec(timeSelected);
+    changeCurrentMin(min);
+    changeCurrentSec(sec);
   }, [timeSelected]);
 
   return (

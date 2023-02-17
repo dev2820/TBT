@@ -28,7 +28,7 @@ const SetupModal = () => {
 const TimePicker = () => {
   return (
     <TimePickerModal
-      title={`${setup.currentSetup.name}`}
+      title={setup.currentSetup.name}
       isVisible={modal.isModalVisible}
       confirm={confirm}
       cancel={cancel}
@@ -40,7 +40,7 @@ const TimePicker = () => {
 const NumberPicker = () => {
   return (
     <NumberPickerModal
-      title={"반복 횟수"}
+      title={setup.currentSetup.name}
       isVisible={modal.isModalVisible}
       confirm={confirm}
       cancel={cancel}

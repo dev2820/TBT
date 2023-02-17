@@ -3,29 +3,28 @@ import TimePickerModal from "@components/TimePickerModal";
 import { observer } from "mobx-react-lite";
 import { useModalStore } from "@store/modalStore";
 import { useSetupStore } from "@store/setupStore";
-import PHASE from "@constants/PHASE";
 
 const modal = useModalStore();
 const setup = useSetupStore();
 
 const confirm = (time) => {
-  setup.changeWorkTime(time);
-  modal.hideWorkSetupModal();
+  setup.changeCurrentSetupValue(time);
+  modal.hideModal();
 };
 const cancel = () => {
-  modal.hideWorkSetupModal();
+  modal.hideModal();
 };
 
-const WorkSetupModal = () => {
+const SetupModal = () => {
   return (
     <TimePickerModal
-      title={"운동 시간"}
-      isVisible={modal.isWorkSetupModalVisible}
+      title={`${setup.currentSetup.name}`}
+      isVisible={modal.isModalVisible}
       confirm={confirm}
       cancel={cancel}
-      value={setup[PHASE.WORK.NAME].value}
+      value={setup.currentSetup.value}
     ></TimePickerModal>
   );
 };
 
-export default observer(WorkSetupModal);
+export default observer(SetupModal);

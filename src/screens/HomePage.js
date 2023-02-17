@@ -4,9 +4,7 @@ import { Page } from "@components/views";
 import ThemeButton from "@components/ThemeButton";
 import Title from "@components/Title";
 import Settings from "@components/Settings";
-import ReadySetupModal from "@screens/ReadySetupModal";
-import BreakSetupModal from "@screens/BreakSetupModal";
-import WorkSetupModal from "@screens/WorkSetupModal";
+import SetupModal from "@screens/SetupModal";
 import RepsSetupModal from "@screens/RepsSetupModal";
 import { usePhaseStore } from "@store/phaseStore";
 import { useViewportStore } from "@store/viewportStore";
@@ -40,9 +38,7 @@ const HomePage = ({ navigation }) => {
       >
         <Text style={[globalStyle.ON_PRIMARY, startTextStyle]}>START</Text>
       </ThemeButton>
-      <ReadySetupModal></ReadySetupModal>
-      <BreakSetupModal></BreakSetupModal>
-      <WorkSetupModal></WorkSetupModal>
+      <SetupModal></SetupModal>
       <RepsSetupModal></RepsSetupModal>
     </Page>
   );

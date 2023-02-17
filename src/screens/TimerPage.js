@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { Text, View, StyleSheet, Button, Dimensions } from "react-native";
-import { Page } from "@components/views";
 import { observer } from "mobx-react-lite";
 import { observe } from "mobx";
 import { useTimerStore } from "@store/timerStore";
@@ -10,6 +9,7 @@ import globalStyle from "@assets/globalStyle";
 import formatTime from "@utils/formatTime";
 import Player from "@components/Player";
 import SmallPlayer from "@components/SmallPlayer";
+import HeaderPage from "@components/HeaderPage";
 import THEME from "@constants/THEME";
 
 const phase = usePhaseStore();
@@ -55,10 +55,11 @@ const TimerPage = ({ navigation }) => {
   };
   const theme = { backgroundColor: phase.currentPhase?.theme ?? THEME.WORK };
   return (
-    <Page style={[theme, styles.container]}>
-      <View style={styles.topbar}>
-        <Button style={styles.home} title="Home" onPress={goBack}></Button>
-      </View>
+    <HeaderPage
+      style={[theme, styles.container]}
+      leadingIcon="Home"
+      onPressLeading={goBack}
+    >
       <View style={styles.timer}>
         <Text style={globalStyle.HEADING_LARGE}>
           {phase.currentRep}/{phase.allRep} {phase.currentPhase?.name}
@@ -84,7 +85,7 @@ const TimerPage = ({ navigation }) => {
           ></SmallPlayer>
         )}
       </View>
-    </Page>
+    </HeaderPage>
   );
 };
 
@@ -92,17 +93,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: "center",
-  },
-  topbar: {
-    width: "100%",
-    height: 56,
-    alignItems: "flex-start",
-    justifyContent: "center",
-  },
-  home: {
-    width: 48,
-    height: 48,
-    left: 0,
   },
   timer: {
     alignItems: "center",

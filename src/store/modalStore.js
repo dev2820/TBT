@@ -5,6 +5,13 @@ import { observable } from "mobx";
  */
 
 const modalStore = observable({
+  isModalVisible: false,
+  showModal() {
+    this.isModalVisible = true;
+  },
+  hideModal() {
+    this.isModalVisible = false;
+  },
   isReadySetupModalVisible: false,
   showReadySetupModal() {
     this.isReadySetupModalVisible = true;

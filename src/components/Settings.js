@@ -12,6 +12,8 @@ const setup = useSetupStore();
 
 const Settings = () => {
   const showModal = (key) => {
+    modal.showModal();
+    return;
     if (key === PHASE.READY.NAME) {
       modal.showReadySetupModal();
       return;

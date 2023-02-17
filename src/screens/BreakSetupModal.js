@@ -10,17 +10,17 @@ const setup = useSetupStore();
 
 const confirm = (time) => {
   setup.changeBreakTime(time);
-  modal.hideBreakSetupModal();
+  modal.hideModal();
 };
 const cancel = () => {
-  modal.hideBreakSetupModal();
+  modal.hideModal();
 };
 
 const BreakSetupModal = () => {
   return (
     <TimePickerModal
       title={"휴식 시간"}
-      isVisible={modal.isBreakSetupModalVisible}
+      isVisible={modal.isModalVisible}
       confirm={confirm}
       cancel={cancel}
       value={setup[PHASE.BREAK.NAME].value}
